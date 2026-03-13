@@ -32,4 +32,5 @@ finch push "${ECR_REPO}:latest"
 echo "All done!"
 echo "test locally using:"
 echo "docker run --rm -it -p 8080:8080 ${ECR_REPO}:latest"
+echo "finch run --rm -it -p 8080:8080 ${ECR_REPO}:latest"
 

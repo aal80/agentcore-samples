@@ -17,7 +17,7 @@ A minimal Amazon Bedrock AgentCore runtime that echoes back the received payload
 ├── Dockerfile              # Container image definition
 ├── requirements.txt        # Python dependencies
 ├── build-and-ecr.sh        # Build container image and push to ECR
-├── invoke.sh               # Invoke the runtime via AWS CLI
+├── invoker.sh               # Invoke the runtime via AWS CLI
 ├── invoker.py              # Invoke the runtime via boto3
 └── terraform/              # Infrastructure as code
     ├── providers.tf        # Provider configuration
@@ -55,7 +55,7 @@ This creates:
 Using the AWS CLI:
 
 ```bash
-./invoke.sh
+./invoker.sh
 ```
 
 Or using Python/boto3:

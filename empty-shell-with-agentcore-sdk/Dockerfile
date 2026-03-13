@@ -1,12 +1,13 @@
-FROM python:3.13-slim
+FROM --platform=linux/arm64 ghcr.io/astral-sh/uv:python3.13-bookworm-slim
 
 WORKDIR /app
 
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+COPY pyproject.toml uv.lock ./
 
-COPY . .
+RUN uv sync --frozen --no-cache
+
+COPY main.py ./
 
 EXPOSE 8080
 
-CMD ["python", "main.py"]
+CMD ["uv", "run", "main.py"]

@@ -1,5 +1,5 @@
 resource "aws_iam_role" "agentcore_runtime" {
-  name = "${local.prefix}-empty-shell-with-agentcore-sdk"
+  name = "${local.prefix}-${local.project_name}"
   
   assume_role_policy = jsonencode({
     Version = "2012-10-17"

@@ -3,7 +3,7 @@ data "aws_caller_identity" "current" {}
 data "aws_region" "current" {}
 
 data "aws_ecr_repository" "this" {
-  name = local.ecr_repository_name
+  name = local.project_name
 }
 
 data "aws_ecr_image" "this" {

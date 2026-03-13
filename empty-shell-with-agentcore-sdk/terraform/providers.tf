@@ -31,5 +31,5 @@ resource "random_string" "prefix" {
 
 locals {
   prefix = random_string.prefix.id
-  ecr_repository_name = "empty-shell-with-agentcore-sdk"
+  project_name = "empty-shell-with-agentcore-sdk"
 }
