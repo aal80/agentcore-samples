@@ -1,0 +1,10 @@
+[project]
+name = "local-strands-agent"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "strands-agents>=1.0.0",
+    "strands-agents-tools>=0.2.0",
+]
