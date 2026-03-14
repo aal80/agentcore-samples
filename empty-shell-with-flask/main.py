@@ -10,7 +10,8 @@ def app_entrypoint():
     print(payload)
     
     return {
-        "msg":"response!",
+        "msg":"hello from AgentCore Empty Shell",
+        "received_headers": dict(request.headers),
         "received_payload": payload,
     }
 
