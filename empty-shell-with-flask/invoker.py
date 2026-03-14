@@ -12,6 +12,7 @@ print(f"> invoking...")
 response = client.invoke_agent_runtime(
     agentRuntimeArn=runtime_arn,
     payload=json.dumps({"prompt": "hello"}),
+    contentType="application/json"
 )
 
 print(f"> response: {response}")
