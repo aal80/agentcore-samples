@@ -11,6 +11,7 @@ echo "> Invoking..."
 aws bedrock-agentcore invoke-agent-runtime \
   --agent-runtime-arn "$RUNTIME_ARN" \
   --payload "$PAYLOAD" \
+  --content-type "application/json" \
   tmp/invoke_output.txt \
   --no-cli-pager
 

@@ -9,6 +9,7 @@ async def app_entrypoint(payload, context):
 
     return {
         "msg":"hello from AgentCore Empty Shell",
+        "received_headers": dict(context.request.headers),
         "received_payload": payload,
     }
 
