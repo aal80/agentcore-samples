@@ -7,7 +7,8 @@ app = FastAPI()
 async def invoke_agent(request: Request):
     body = await request.json()
     return {
-        "msg":"response!",
+        "msg":"hello from AgentCore Empty Shell",
+        "received_headers": dict(request.headers),
         "received_payload": body,
     }
 
