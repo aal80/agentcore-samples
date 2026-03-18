@@ -1,0 +1,12 @@
+[project]
+name = "simple-strands-agent"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "bedrock-agentcore>=1.4.6",
+    "strands-agents>=1.30.0",
+    "watchfiles>=1.1.1",
+]
+

@@ -34,7 +34,6 @@ resource "aws_iam_role_policy" "agent_permissions" {
           "xray:PutTraceSegments", 
           "xray:PutTelemetryRecords"
         ]
-        
         Resource = "*"
       }
     ]
