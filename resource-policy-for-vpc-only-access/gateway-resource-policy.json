@@ -1,0 +1,26 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": [
+                "bedrock-agentcore:InvokeGateway"
+            ],
+            "Resource": "arn:aws:bedrock-agentcore:us-east-1:11111111111:gateway/gateway_id"
+        },
+        {
+            "Effect": "Deny",
+            "Principal": "*",
+            "Action": [
+                "bedrock-agentcore:InvokeGateway"
+            ],
+            "Resource": "arn:aws:bedrock-agentcore:us-east-1:11111111111:gateway/gateway_id"
+            "Condition": {
+                "StringNotEquals": {
+                    "aws:SourceVpc":"vpc-id"
+                }
+            }
+        }
+    ]
+}
