@@ -1,0 +1,13 @@
+[project]
+name = "strands-agent-with-observability"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "aws-opentelemetry-distro>=0.16.0",
+    "bedrock-agentcore>=1.4.6",
+    "boto3>=1.42.69",
+    "strands-agents[otel]>=1.30.0",
+    "watchfiles>=1.1.1",
+]
