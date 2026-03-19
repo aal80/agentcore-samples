@@ -15,7 +15,7 @@
             "Action": [
                 "bedrock-agentcore:InvokeGateway"
             ],
-            "Resource": "arn:aws:bedrock-agentcore:us-east-1:11111111111:gateway/gateway_id"
+            "Resource": "arn:aws:bedrock-agentcore:us-east-1:11111111111:gateway/gateway_id",
             "Condition": {
                 "StringNotEquals": {
                     "aws:SourceVpc":"vpc-id"
