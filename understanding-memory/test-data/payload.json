@@ -1,0 +1,42 @@
+[
+  {
+    "conversational": {
+      "content": {
+        "text": "I want to build a modern gaming PC. Can you help me research the best components?"
+      },
+      "role": "USER"
+    }
+  },
+  {
+    "conversational": {
+      "content": {
+        "text": "I'd love to help you build a gaming PC! Let's start with the key components. What's your budget, and do you have any preferences for CPU (AMD vs Intel) or GPU (NVIDIA vs AMD)?"
+      },
+      "role": "ASSISTANT"
+    }
+  },
+  {
+    "conversational": {
+      "content": {
+        "text": "My budget is around $1000. I've always been an NVIDIA fan, and I'd like to try AMD for the CPU this time. I also want it to handle 4K gaming."
+      },
+      "role": "USER"
+    }
+  },
+  {
+    "conversational": {
+      "content": {
+        "text": "Great choices! For your $1000 budget targeting 4K gaming, I'd recommend looking at the AMD Ryzen 7 7800X3D for the CPU — it's excellent for gaming thanks to its 3D V-Cache. For the GPU, the NVIDIA RTX 4070 Ti Super offers strong 4K performance. You'll also want 32GB of DDR5 RAM, a good B650 or X670 motherboard, and a 1TB NVMe SSD. Want me to put together a full parts list?"
+      },
+      "role": "ASSISTANT"
+    }
+  },
+  {
+    "conversational": {
+      "content": {
+        "text": "Yes, that sounds perfect. Also, I work at AcmeCorp and we get a 25% employee discount on PC components, so I might be able to stretch the budget a bit further."
+      },
+      "role": "USER"
+    }
+  }
+]
