@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+dist/
+build/
+
+.venv/
+.claude/
+.env
+
+# Terraform
+terraform/.terraform/
+terraform/*.tfstate
+terraform/*.tfstate.backup
+terraform/.terraform.lock.hcl
+*.tfvars
+
+# IDE
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+
+# Temp files
+tmp/

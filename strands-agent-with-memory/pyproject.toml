@@ -1,0 +1,10 @@
+[project]
+name = "strands-agent-with-memory"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "bedrock-agentcore[strands-agents]>=1.4.7",
+    "strands-agents>=1.30.0",
+]
