@@ -6,6 +6,8 @@ There's no agent in this sample. Memory only.
 
 ## Architecture
 
+![](./images/architecture.png)
+
 The sample provisions:
 - A **Memory resource** with 7-day event expiry
 - Three **memory strategies** with different namespace scoping:
