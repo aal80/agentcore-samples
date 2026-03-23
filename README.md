@@ -6,9 +6,10 @@ A [growing] collection of sample projects demonstrating how to build, deploy, an
 
 | Sample | Framework | Language | IaC | Description |
 |--------|-----------|----------|-----|-------------|
-| [simple-strands-agent](simple-strands-agent/) | Strands Agent SDK | Python | Terraform | A simple Strands Agent deployed on AgentCore Runtime. |
-| [strands-agent-with-observability](strands-agent-with-observability/) | Strands Agents SDK | Python | Terraform | Strands agent deployed on AgentCore Runtime with full observability via OpenTelemetry, CloudWatch Logs/Traces, and Transacational Search. |
+| [simple-strands-agent](simple-strands-agent/) | Strands | Python | Terraform | A simple Strands Agent deployed on AgentCore Runtime. |
+| [strands-agent-with-observability](strands-agent-with-observability/) | Strands | Python | Terraform | Strands agent deployed on AgentCore Runtime with full observability via OpenTelemetry, CloudWatch Logs/Traces, and Transacational Search. |
 | [understanding-memory](understanding-memory/) | -- | -- | Terraform | IaC and test scripts illustrating how AgentCore Memory works. There's no agent in this sample. Memory only. |
+| [strands-agent-with-memory](strands-agent-with-memory/) | Strands | Python | Terraform | Strands agent deployed on AgentCore Runtime and using AgentCore Memory for persisting conversation history and extracting semantic/summary/user preferences memories. |
 | [empty-shell-with-agentcore-sdk](empty-shell-with-agentcore-sdk/) | AgentCore SDK | Python | Terraform | Minimal runtime using the `bedrock-agentcore` Python SDK. Illustrates AgentCore Runtime interface implementation, doesn't actually have an agent running. |
 | [empty-shell-with-fastapi](empty-shell-with-fastapi/) | FastAPI | Python | Terraform | Minimal runtime implementing AgentCore's HTTP interface with `FastAPI`. Illustrates AgentCore Runtime interface implementation, doesn't actually have an agent running. |
 | [empty-shell-with-flask](empty-shell-with-flask/) | Flask | Python | Terraform | Minimal runtime implementing AgentCore's HTTP interface with `Flask`. Illustrates AgentCore Runtime interface implementation, doesn't actually have an agent running. |
