@@ -1,0 +1,15 @@
+{
+  "interceptorOutputVersion": "1.0",
+  "mcp": {
+    "transformedGatewayResponse" : {
+        "statusCode": 200,
+        "body": {
+            "jsonrpc": "2.0",
+            "id": 1,
+            "result": {
+                "foo": "bar"
+            }
+        }
+    }
+  }
+}

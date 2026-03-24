@@ -1,0 +1,22 @@
+{
+  "interceptorOutputVersion": "1.0",
+  "mcp": {
+    "transformedGatewayRequest" : {
+        "body": {
+            "jsonrpc": "2.0",
+            "id": 1,
+            "method": "tools/list"
+        }
+    },
+    "transformedGatewayResponse" : {
+        "statusCode": 200,
+        "body": {
+            "jsonrpc": "2.0",
+            "id": 1,
+            "result": {
+                "foo": "bar"
+            }
+        }
+    }
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "interceptorInputVersion": "1.0",
+  "mcp": {
+    "gatewayRequest": {
+      "path": "/mcp",
+      "httpMethod": "POST",
+      "headers": {
+        "accept": "*/*",
+        "authorization": "token....",
+        "user-agent": "curl/8.7.1",
+        "mcp-session-id":"some-session-id",
+        "foo":"bar"
+      },
+      "body": {
+        "jsonrpc": "2.0",
+        "method": "tools/list",
+        "id": 1
+      }
+    },
+    "gatewayResponse": {
+      "path": "/mcp",
+      "httpMethod": "POST",
+      "headers": {
+        "content-type": "application/json",
+        "host": "some-host",
+        "user-agent": "curl/8.7.1",
+        "foo":"bar"
+      },
+      "body": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "result": {
+          "tools": [
+            {
+              "inputSchema": {
+                "type": "object",
+                "properties": {
+                  "itemIds": {
+                    "description": "Array of pizza IDs to order, always check menu first.",
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "required": [
+                  "itemIds"
+                ]
+              },
+              "name": "create-order___create-order",
+              "description": "Use this tool to submit a new pizza order"
+            },
+            {
+              "inputSchema": {
+                "type": "object"
+              },
+              "name": "get-menu___get-menu",
+              "description": "This tool returns pizza menu"
+            }
+          ]
+        }
+      },
+      "statusCode": 200
+    },
+    "rawGatewayRequest": {
+      "body": "{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"tools/list\"}"
+    }
+  }
+}

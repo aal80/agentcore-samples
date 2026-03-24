@@ -1,0 +1,25 @@
+{
+  "interceptorInputVersion": "1.0",
+  "mcp": {
+    "gatewayRequest": {
+      "path": "/mcp",
+      "httpMethod": "POST",
+      "headers": {
+        "accept": "*/*",
+        "authorization": "token....",
+        "user-agent": "curl/8.7.1",
+        "mcp-session-id":"some-session-id",
+        "foo":"bar"
+      },
+      "body": {
+        "jsonrpc": "2.0",
+        "method": "tools/list",
+        "id": 1
+      }
+    },
+    "rawGatewayRequest": {
+      "body": "{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"tools/list\"}"
+    },
+    "gatewayResponse":null
+  }
+}
