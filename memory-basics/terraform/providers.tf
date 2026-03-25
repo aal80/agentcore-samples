@@ -35,7 +35,7 @@ resource "random_string" "prefix" {
 
 locals {
   prefix = random_string.prefix.id
-  project_name = "${random_string.prefix.id}-understanding-memory"
+  project_name = "${random_string.prefix.id}-memory-basics"
   project_name_underscore = replace(local.project_name, "-","_")
 }
 
