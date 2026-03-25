@@ -13,20 +13,10 @@ The project deploys:
 - **get-menu** — Lambda function (Node.js 22) that returns a pizza menu
 - **create-order** — Lambda function (Node.js 22) that accepts pizza IDs and creates an order
 
-## Auth Flow
+## Architecture and auth flow
 
-```
-Client                        Cognito                     AgentCore Gateway
-  |                              |                              |
-  |-- POST /oauth2/token ------->|                              |
-  |   (client_credentials)       |                              |
-  |<-- access_token (JWT) -------|                              |
-  |                              |                              |
-  |------- POST /mcp (Bearer token) --------------------------->|
-  |                              |   validate JWT via OIDC      |
-  |                              |<-- /.well-known/openid-conf -|
-  |<--- MCP response -------------------------------------------|
-```
+![](./images/architecture.png)
+
 
 ## Project Structure
 
