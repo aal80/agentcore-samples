@@ -10,12 +10,12 @@ The samples are organized as a learning path — start from the top to build fou
 
 Before building agents, understand the Runtime interface itself. These "empty shell" samples implement the AgentCore HTTP contract without running an actual agent — perfect for learning the protocol in isolation.
 
-| Sample | Framework | Language | Description |
-|--------|-----------|----------|-------------|
-| [empty-shell-with-agentcore-sdk](empty-shell-with-agentcore-sdk/) | AgentCore SDK | Python | Minimal runtime using the `bedrock-agentcore` Python SDK. |
-| [empty-shell-with-fastapi](empty-shell-with-fastapi/) | FastAPI | Python | Implements the Runtime HTTP interface with FastAPI. |
-| [empty-shell-with-flask](empty-shell-with-flask/) | Flask | Python | Implements the Runtime HTTP interface with Flask. |
-| [empty-shell-with-expressjs](empty-shell-with-expressjs/) | Express.js | Node.js | Implements the Runtime HTTP interface with Express.js. |
+| Sample | Framework | Language | IaC | Description |
+|--------|-----------|----------|-----|-------------|
+| [empty-shell-with-agentcore-sdk](empty-shell-with-agentcore-sdk/) | AgentCore SDK | Python | Terraform | Minimal runtime using the `bedrock-agentcore` Python SDK. |
+| [empty-shell-with-fastapi](empty-shell-with-fastapi/) | FastAPI | Python | Terraform | Implements the Runtime HTTP interface with FastAPI. |
+| [empty-shell-with-flask](empty-shell-with-flask/) | Flask | Python | Terraform | Implements the Runtime HTTP interface with Flask. |
+| [empty-shell-with-expressjs](empty-shell-with-expressjs/) | Express.js | Node.js | Terraform | Implements the Runtime HTTP interface with Express.js. |
 
 > [Read AgentCore Runtime docs for more info](https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/runtime-http-protocol-contract.html)
 
@@ -23,30 +23,38 @@ Before building agents, understand the Runtime interface itself. These "empty sh
 
 With the Runtime interface understood, deploy actual agents. Start with a local agent, then move to cloud-deployed agents with observability.
 
-| Sample | Framework | Language | Description |
-|--------|-----------|----------|-------------|
-| [local-strands-agent](local-strands-agent/) | Strands | Python | Local AI agent with custom tools — no cloud deployment needed. |
-| [simple-strands-agent](simple-strands-agent/) | Strands | Python | A simple Strands Agent deployed on AgentCore Runtime. |
-| [strands-agent-with-observability](strands-agent-with-observability/) | Strands | Python | Strands agent on AgentCore Runtime with full observability via OpenTelemetry, CloudWatch Logs/Traces, and Transactional Search. |
+| Sample | Framework | Language | IaC | Description |
+|--------|-----------|----------|-----|-------------|
+| [local-strands-agent](local-strands-agent/) | Strands | Python | -- | Local AI agent with custom tools — no cloud deployment needed. |
+| [simple-strands-agent](simple-strands-agent/) | Strands | Python | Terraform | A simple Strands Agent deployed on AgentCore Runtime. |
+| [strands-agent-with-observability](strands-agent-with-observability/) | Strands | Python | Terraform | Strands agent on AgentCore Runtime with full observability via OpenTelemetry, CloudWatch Logs/Traces, and Transactional Search. |
+
+> [Read AgentCore Runtime docs for more info](https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/agents-tools-runtime.html)
+
 
 ### 3. AgentCore Memory
 
 Add persistence and recall to your agents. Start with the memory fundamentals, then see how memory integrates into a deployed agent.
 
-| Sample | Framework | Language | Description |
-|--------|-----------|----------|-------------|
-| [memory-basics](memory-basics/) | -- | -- | IaC and test scripts illustrating how AgentCore Memory works. No agent — memory only. |
-| [strands-agent-with-memory](strands-agent-with-memory/) | Strands | Python | Strands agent on AgentCore Runtime using AgentCore Memory for conversation history, semantic memories, summaries, and user preferences. |
+| Sample | Framework | Language | IaC | Description |
+|--------|-----------|----------|-----|-------------|
+| [memory-basics](memory-basics/) | -- | -- | Terraform | IaC and test scripts illustrating how AgentCore Memory works. No agent — memory only. |
+| [strands-agent-with-memory](strands-agent-with-memory/) | Strands | Python | Terraform | Strands agent on AgentCore Runtime using AgentCore Memory for conversation history, semantic memories, summaries, and user preferences. |
+
+> [Read AgentCore Memory docs for more info](https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/memory.html)
+
 
 ### 4. AgentCore Gateway
 
 Expose agents securely through managed MCP gateways. Progress from basic setup to authentication and request/response interception.
 
-| Sample | Framework | Language | Description |
-|--------|-----------|----------|-------------|
-| [gateway-basics](gateway-basics/) | -- | -- | AgentCore Gateway with MCP backed by Lambda functions. Covers resources, targets, observability, and CloudWatch dashboards. |
-| [gateway-with-inbound-jwt](gateway-with-inbound-jwt/) | -- | -- | Gateway secured with JWT-based auth using Amazon Cognito. Clients authenticate via OAuth2 `client_credentials` flow. |
-| [gateway-with-interceptors](gateway-with-interceptors/) | -- | -- | Gateway with Lambda interceptors that inspect and transform inbound requests and outbound responses. |
+| Sample | Framework | Language | IaC | Description |
+|--------|-----------|----------|-----|-------------|
+| [gateway-basics](gateway-basics/) | -- | -- | Terraform | AgentCore Gateway with MCP backed by Lambda functions. Covers resources, targets, observability, and CloudWatch dashboards. |
+| [gateway-with-inbound-jwt](gateway-with-inbound-jwt/) | -- | -- | Terraform | Gateway secured with JWT-based auth using Amazon Cognito. Clients authenticate via OAuth2 `client_credentials` flow. |
+| [gateway-with-interceptors](gateway-with-interceptors/) | -- | -- | Terraform | Gateway with Lambda interceptors that inspect and transform inbound requests and outbound responses. |
+
+> [Read AgentCore Gateway docs for more info](https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/gateway.html)
 
 ### 5. Security & Access Control
 
@@ -55,6 +63,8 @@ Lock down access to your AgentCore resources.
 | Sample | Description |
 |--------|-------------|
 | [resource-policy-for-vpc-only-access](resource-policy-for-vpc-only-access/) | Resource policy example restricting AgentCore Gateway access to a specific VPC. |
+
+> [Read AgentCore Security docs for more info](https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/security.html)
 
 ## License
 
