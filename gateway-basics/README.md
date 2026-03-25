@@ -127,7 +127,7 @@ make create-order
 ```
 
 ```bash
-curl -s -X POST https://utrw-gateway-basics-g5jj3zehny.gateway.bedrock-agentcore.us-east-1.amazonaws.com/mcp \
+curl -s -X POST https://{id}.gateway.bedrock-agentcore.{region}.amazonaws.com/mcp \
                 -H "Content-Type: application/json" \
                 -d '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"create-order___create-order","arguments":{"itemIds":[1,2,3]}}}'
 
