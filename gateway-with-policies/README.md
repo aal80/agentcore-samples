@@ -360,7 +360,7 @@ Keep this in mind for the next step.
 
 Let's add a policy that permits `create-order` only if the client has the `gateway/create_order` scope in their JWT.
 
-In [terraform/policy_engine.tf](terraform/policy_engine.tf#L35), uncomment `allow_create_order_with_scope`. Note the "when" condition, it ensures that create_order tool can only be called if incoming request principal has `gateway/create_order` scope in the JWT. 
+In [terraform/policy_engine.tf](terraform/policy_engine.tf#L35-L55), uncomment `allow_create_order_with_scope`. Note the "when" condition, it ensures that create_order tool can only be called if incoming request principal has `gateway/create_order` scope in the JWT. 
 
 ```hcl
 resource "awscc_bedrockagentcore_policy" "allow_create_order_with_scope" {
@@ -414,11 +414,11 @@ Get menu
 make get-menu
 ```
 
-Is that a PINEAPPLE PIZZA with id=5?! Let's see how a `forbid` policy can be used to block any orders of this abomination. 
+Is that a **PINEAPPLE PIZZA** with id=5?! Let's see how a `forbid` policy can be used to block any orders of this abomination. 
 
 Add a `forbid` policy that blocks ordering Pineapple pizza (id=5), regardless of any permit policies - `forbid` always wins over `permit`.
 
-In [terraform/policy_engine.tf](terraform/policy_engine.tf#L57), uncomment `forbid_pineapple_pizza`. Note the `when` condition. 
+In [terraform/policy_engine.tf](terraform/policy_engine.tf#L57-L76), uncomment `forbid_pineapple_pizza`. Note the `when` condition. 
 
 ```hcl
 resource "awscc_bedrockagentcore_policy" "forbid_pineapple_pizza" {

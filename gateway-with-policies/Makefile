@@ -35,6 +35,7 @@ deploy-all:
 destroy:
 	@echo "Destroying everything..."
 	cd terraform && terraform destroy
+	rm -rf tmp
 
 define get-token
 	@echo "Getting a new token for $(1)..."
