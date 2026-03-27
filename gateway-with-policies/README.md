@@ -34,7 +34,7 @@ make deploy-all
 
 This creates the gateway, Lambda functions implementing tools, Cognito resources, policy engine (not yet connected to the gateway), and observability (logs/traces). 
 
-At this point the project DOES NOT have any authorization controls enabled yet. The gateway starts with `authorizer_type = "NONE"` and no policy engine attached (see [terraform/gateway.tf](./terraform/gateway.tf#L82-L107)).
+**At this point the project DOES NOT have any authorization controls enabled yet.** The gateway starts with `authorizer_type = "NONE"` and no policy engine attached (see [terraform/gateway.tf](./terraform/gateway.tf#L82-L107)).
 
 
 ### Step 2: Test initial state - no security, open access
@@ -120,7 +120,7 @@ Let's start adding security layers.
 
 In Step 1, Terraform created a Cognito user pool and two clients. See [terraform/cognito.tf](./terraform/cognito.tf#L26-L46) for details. Credentials for both clients were stored in `./tmp/cognito_client*.txt`.
 
-To enable JWT Authorization on the AgentCore Gateway, update the gateway resource in [terraform/gateway.tf](terraform/gateway.tf#L87):
+To enable JWT Authorization on the AgentCore Gateway, update the gateway resource in [terraform/gateway.tf](terraform/gateway.tf#L87-L98):
 
 1. Change `authorizer_type` from `"NONE"` to `"CUSTOM_JWT"`
 2. Uncomment the `authorizer_configuration` block. Note the `allowed_scopes` property. It requires all incoming requests to have at a minimum `gateway/get_menu` scope. 
