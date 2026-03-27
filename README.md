@@ -53,18 +53,15 @@ Expose agents securely through managed MCP gateways. Progress from basic setup t
 | [gateway-basics](gateway-basics/) | -- | -- | Terraform | AgentCore Gateway with MCP backed by Lambda functions. Covers resources, targets, observability, and CloudWatch dashboards. |
 | [gateway-with-inbound-jwt](gateway-with-inbound-jwt/) | -- | -- | Terraform | Gateway secured with JWT-based auth using Amazon Cognito. Clients authenticate via OAuth2 `client_credentials` flow. |
 | [gateway-with-interceptors](gateway-with-interceptors/) | -- | -- | Terraform | Gateway with Lambda interceptors that inspect and transform inbound requests and outbound responses. |
+| [gateway-with-policies](gateway-with-policies/) | -- | -- | Terraform | Gateway with JWT-based auth and AgentCore Policy engine validating incoming request for fine-grained policy adherence. |
 
 > [Read AgentCore Gateway docs for more info](https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/gateway.html)
 
-### 5. Security & Access Control
-
-Lock down access to your AgentCore resources.
+### 5. Misc
 
 | Sample | Description |
 |--------|-------------|
 | [resource-policy-for-vpc-only-access](resource-policy-for-vpc-only-access/) | Resource policy example restricting AgentCore Gateway access to a specific VPC. |
-
-> [Read AgentCore Security docs for more info](https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/security.html)
 
 ## License
 
