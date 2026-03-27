@@ -1,6 +1,6 @@
 # AgentCore Gateway with Policies - Step-by-Step Tutorial
 
-This tutorial demonstrates how to gradually enable security on an [Amazon Bedrock AgentCore Gateway](https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/gateway.html) using JWT authentication and AgentCore Policies.
+This tutorial demonstrates how to gradually enable security on an [Amazon Bedrock AgentCore Gateway](https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/gateway.html) using JWT authentication and [AgentCore Policy](https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/policy.html) Engine.
 
 ![](./images/architecture.png)
 
