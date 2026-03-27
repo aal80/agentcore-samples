@@ -199,11 +199,11 @@ If you decode the client1 token (e.g. using [jwt.io](https://jwt.io)), you'll se
 
 However at this point the gateway authorizer configuration only requires `gateway/get_menu` scope. Since both clients are allowed to receive this scope, both client1 and client2 are permitted to create orders. In other words, the gateway does not require `gateway/create_order` scope just yet - both clients can access all tools since there's no policy engine yet.
 
-Let's summarize - so far both clients can call all tools, gateway authorized checks JWT validity and the presence of `gateway/get_menu` scope. But without there are no fine grained authorization policies just yet. Let's fix that. 
+Let's summarize - so far both clients can call all tools, gateway authorizer checks JWT validity and the presence of `gateway/get_menu` scope. But without Policy Engine there are no fine grained authorization policies just yet. Let's fix that. 
 
-### Step 5: Enable Policy Engine (But no policies just yet!)
+### Step 5: Enable Policy Engine (just engine, no policies just yet!)
 
-In [terraform/gateway.tf](terraform/gateway.tf#L103), uncomment the `policy_engine_configuration` block. This connects AgentCore Gateway to the Policy Engine. 
+In [terraform/gateway.tf](terraform/gateway.tf#L100-L104), uncomment the `policy_engine_configuration` block. This connects AgentCore Gateway to the Policy Engine. 
 
 ```hcl
 resource "awscc_bedrockagentcore_gateway" "this" {
@@ -224,7 +224,7 @@ Deploy:
 make deploy-all-recreate-gateway
 ```
 
-Now test - **all calls will be denied** because AgentCore Policy Engine uses default-deny and there are no permit policies yet:
+Now test - **tools list will be empty and all tool calls will be denied** because AgentCore Policy Engine uses default-deny and there are no permit policies yet:
 
 ```bash
 make get-client1-token
@@ -255,7 +255,7 @@ make create-order  # => Denied
 
 ### Step 6: Enable `permit_all` Policy. 
 
-Let's illustrate how policies work. Start with a permit_all policy. 
+Let's illustrate how policies work. Start with a `permit_all` policy. 
 
 In [terraform/policy_engine.tf](terraform/policy_engine.tf#L5-L15), uncomment the `permit_all` policy. Note that this policy permits ALL incoming requests and doesn't do any conditional validation. It is definitely overly permissive and we'll disable it in subsequent steps, but for now it helps to illustrate how policies work. 
 
@@ -294,7 +294,7 @@ You definitely don't want `permit_all` policy in production. This was for illust
 
 Let's remove the `permit_all` policy and add the `allow_get_menu` policy that only permits the `get-menu` tool. Note that this new policy allows ALL principals to invoke the `get_menu` tool in a specific AgentCore Gateway instance. 
 
-In [terraform/policy_engine.tf](terraform/policy_engine.tf):
+In [terraform/policy_engine.tf#L5-L33](terraform/policy_engine.tf):
 1. Comment out `permit_all`
 2. Uncomment `allow_get_menu`
 
