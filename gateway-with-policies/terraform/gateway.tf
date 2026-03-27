@@ -66,10 +66,7 @@ resource "aws_iam_role_policy" "agentcore_gateway_policy_engine" {
         "bedrock-agentcore:GetPolicyEngine",
         "bedrock-agentcore:CheckAuthorizePermissions"
       ]
-      Resource = [
-        awscc_bedrockagentcore_policy_engine.this.policy_engine_arn,
-        awscc_bedrockagentcore_gateway.this.gateway_arn
-      ]
+      Resource = ["*"]
     }]
   })
 }

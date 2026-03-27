@@ -64,7 +64,8 @@ list-tools:
 	curl -s -X POST $(GATEWAY_URL) \
 		-H "Content-Type: application/json" \
 		-H "Authorization: Bearer $(ACCESS_TOKEN)" \
-		-d '{"jsonrpc":"2.0","id":1,"method":"tools/list"}'
+		-d '{"jsonrpc":"2.0","id":1,"method":"tools/list"}' \
+		| jq .
 
 get-menu:
 	$(get-agentcore-vars)
@@ -72,7 +73,8 @@ get-menu:
 	curl -s -X POST $(GATEWAY_URL) \
 		-H "Content-Type: application/json" \
 		-H "Authorization: Bearer $(ACCESS_TOKEN)" \
-		-d '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"get-menu___get-menu","arguments":{}}}'
+		-d '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"get-menu___get-menu","arguments":{}}}' \
+		| jq .
 
 
 create-order:
@@ -82,5 +84,6 @@ create-order:
 	curl -s -X POST $(GATEWAY_URL) \
 		-H "Content-Type: application/json" \
 		-H "Authorization: Bearer $(ACCESS_TOKEN)" \
-		-d '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"create-order___create-order","arguments":{"pizzaId":$(pizzaId)}}}'
+		-d '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"create-order___create-order","arguments":{"pizzaId":$(pizzaId)}}}' \
+		| jq .
 
