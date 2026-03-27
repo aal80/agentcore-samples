@@ -294,7 +294,7 @@ You definitely don't want `permit_all` policy in production. This was for illust
 
 Let's remove the `permit_all` policy and add the `allow_get_menu` policy that only permits the `get-menu` tool. Note that this new policy allows ALL principals to invoke the `get_menu` tool in a specific AgentCore Gateway instance. 
 
-In [terraform/policy_engine.tf#L5-L33](terraform/policy_engine.tf):
+In [terraform/policy_engine.tf](terraform/policy_engine.tf#L5-L33):
 1. Comment out `permit_all`
 2. Uncomment `allow_get_menu`
 
