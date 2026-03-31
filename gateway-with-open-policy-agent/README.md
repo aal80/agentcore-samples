@@ -1,16 +1,17 @@
 # AgentCore Gateway with Open Policy Agent
 
-A sample project demonstrating how to integrate [Open Policy Agent (OPA)](https://www.openpolicyagent.org/) with an Amazon Bedrock AgentCore Gateway for custom policy enforcement. After JWT token validation, the gateway is forwarding request to an interceptor (a Lambda function). The interceptor decodes inbound JWTs, extracts token claims, MCP tool name and arguments, and forwards them to an OPA microservice running on AWS App Runner. OPA evaluates [Rego](https://www.openpolicyagent.org/docs/latest/policy-language/) policies and returns authorization decisions before the request reaches the tool.
+A sample project demonstrating how to integrate [Open Policy Agent (OPA)](https://www.openpolicyagent.org/) with an Amazon Bedrock AgentCore Gateway for custom policy enforcement. After JWT token validation, the gateway is forwarding request to an interceptor (a Lambda function). The interceptor decodes inbound JWTs, extracts token claims, MCP tool name and arguments, and forwards them to an OPA microservice running as another Lambda function. OPA evaluates [Rego](https://www.openpolicyagent.org/docs/latest/policy-language/) policies and returns authorization decisions before the request reaches the tool.
 
 ## Architecture
 
-![](./images/architecture1.png)
+![](./images/architecture.png)
 
 The project deploys:
 
 - **AgentCore Gateway** — MCP-compatible gateway with `CUSTOM_JWT` authorizer and a Lambda request interceptor
 - **gateway-interceptor** — Lambda function (Node.js 22) that decodes the inbound JWT, extracts claims, and calls OPA for an authorization decision before passing the request through
-- **OPA service** — Open Policy Agent running on AWS App Runner, evaluating Rego policies and returning authorization decisions
+- **OPA service** — Open Policy Agent running as a Lambda container image with [Lambda Web Adapter](https://github.com/awslabs/aws-lambda-web-adapter), exposed via an API Gateway HTTP API
+- **API Gateway HTTP API** — provides a stable HTTPS endpoint in front of the OPA Lambda
 - **AWS Cognito** — User Pool with two app clients, each issued different OAuth scopes:
   - **client1** — `gateway/get_menu` scope only
   - **client2** — `gateway/get_menu` and `gateway/create_order` scopes
@@ -73,7 +74,7 @@ make push-opa-image
 make deploy-infra
 ```
 
-This provisions the gateway, Lambda functions, Cognito resources, and the OPA App Runner service. App Runner can take 5-10 minutes to provision the service. 
+This provisions the gateway, Lambda functions, Cognito resources, OPA Lambda, and API Gateway.
 
 ## Authenticate and Test
 

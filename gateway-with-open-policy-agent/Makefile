@@ -34,6 +34,7 @@ endef
 login-to-ecr:
 	@echo "Logging in into ECR..."
 	$(get-aws-vars)
+	aws ecr-public get-login-password --region us-east-1 | finch login --username AWS --password-stdin public.ecr.aws
 	aws ecr get-login-password | finch login --username AWS --password-stdin "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com"
 
 create-opa-ecr-repo:
