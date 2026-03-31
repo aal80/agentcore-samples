@@ -1,0 +1,17 @@
+# Terraform
+terraform/.terraform/
+terraform/*.tfstate
+terraform/*.tfstate.backup
+terraform/.terraform.lock.hcl
+
+# Build artifacts
+tmp/
+
+node_modules
+
+# OS
+.DS_Store
+
+.claude
+
+images/*.bkp
