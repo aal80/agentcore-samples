@@ -4,7 +4,7 @@ A sample project demonstrating how to integrate [Open Policy Agent (OPA)](https:
 
 ## Architecture
 
-![](./images/architecture.png)
+![](./images/architecture1.png)
 
 The project deploys:
 
