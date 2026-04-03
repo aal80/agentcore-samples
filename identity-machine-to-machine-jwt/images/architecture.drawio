@@ -1,0 +1,362 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.6.6 Chrome/144.0.7559.236 Electron/40.8.4 Safari/537.36" version="29.6.6">
+  <diagram name="Page-1" id="vp5-szPGpHpTUDPtSne3">
+    <mxGraphModel dx="2345" dy="710" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-78" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" value="" vertex="1">
+          <mxGeometry height="155" width="751" x="-1111" y="335" as="geometry" />
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-75" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" value="" vertex="1">
+          <mxGeometry height="165" width="750" x="-1110" y="137.5" as="geometry" />
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-66" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="140" width="440" x="-810" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-41" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#666666;fillColor=#f5f5f5;fontColor=#333333;" value="" vertex="1">
+          <mxGeometry height="50" width="820" x="20" y="500" as="geometry" />
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-38" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#666666;fillColor=#f5f5f5;fontColor=#333333;" value="" vertex="1">
+          <mxGeometry height="110" width="820" x="20" y="380" as="geometry" />
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-36" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#666666;fillColor=#f5f5f5;fontColor=#333333;" value="" vertex="1">
+          <mxGeometry height="80" width="820" x="20" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-34" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#666666;fillColor=#f5f5f5;fontColor=#333333;" value="" vertex="1">
+          <mxGeometry height="50" width="820" x="20" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-32" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#666666;fillColor=#f5f5f5;fontColor=#333333;" value="" vertex="1">
+          <mxGeometry height="50" width="820" x="20" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-4" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="Workload (e.g. Agent)" vertex="1">
+          <mxGeometry height="420" width="100" x="170" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-5" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="Workload Identities Registry" vertex="1">
+          <mxGeometry height="250" width="100" x="310" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-6" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;labelBackgroundColor=none;" value="Create workload identity&lt;div&gt;&lt;br/&gt;&lt;/div&gt;">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="69.99857142857132" y="250" as="sourcePoint" />
+            <mxPoint x="359.5" y="250" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-7" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;labelBackgroundColor=none;" value="workload identity name / arn&lt;div&gt;&lt;br/&gt;&lt;/div&gt;">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="360" y="270" as="sourcePoint" />
+            <mxPoint x="69.92857142857133" y="270" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-15" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="Credentials Providers Registry" vertex="1">
+          <mxGeometry height="360" width="110" x="440" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-16" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;labelBackgroundColor=none;" value="Create an OAuth2 (supply Cognito User Pool configuration, client_id and secret)&lt;div&gt;&lt;br&gt;&lt;/div&gt;">
+          <mxGeometry height="50" relative="1" width="50" x="-0.0104" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="69.92857142857133" y="190" as="sourcePoint" />
+            <mxPoint x="494.5" y="190" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-17" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;labelBackgroundColor=none;" value="Credentials provider name / arn&amp;nbsp;&lt;div&gt;&amp;nbsp;&lt;/div&gt;">
+          <mxGeometry height="50" relative="1" width="50" x="0.0006" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="494.5" y="210" as="sourcePoint" />
+            <mxPoint x="69.92857142857133" y="210" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-19" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="Operator / Admin" vertex="1">
+          <mxGeometry height="160" width="100" x="20" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-20" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;labelBackgroundColor=none;" value="get workload access token&lt;br&gt;for workload identity name">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="220" y="310" as="sourcePoint" />
+            <mxPoint x="360" y="310" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-21" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;labelBackgroundColor=none;" value="Validate permissions">
+          <mxGeometry height="50" relative="1" width="50" x="-0.2496" y="32" as="geometry">
+            <mxPoint x="-2" y="-10" as="offset" />
+            <Array as="points">
+              <mxPoint x="390" y="330" />
+              <mxPoint x="390" y="350" />
+            </Array>
+            <mxPoint x="359.92857142857156" y="330" as="sourcePoint" />
+            <mxPoint x="359.92857142857156" y="350" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-22" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;labelBackgroundColor=none;" value="workload access token&lt;div&gt;&lt;br/&gt;&lt;/div&gt;">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="360.07142857142867" y="360" as="sourcePoint" />
+            <mxPoint x="220" y="360" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-23" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="Cognito" vertex="1">
+          <mxGeometry height="360" width="130" x="580" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-24" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;labelBackgroundColor=none;" value="get credentials + workload access token&lt;div&gt;&lt;br/&gt;&lt;/div&gt;">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="220" y="400" as="sourcePoint" />
+            <mxPoint x="494.5" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-25" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;align=left;labelBackgroundColor=none;" target="mUEe1CBN_0LBhsrHWQli-15" value="Validate workload&lt;br&gt;access token">
+          <mxGeometry height="50" relative="1" width="50" x="-0.5009" y="15" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="525.0714285714284" y="410" />
+              <mxPoint x="525.0714285714284" y="430" />
+              <mxPoint x="510" y="430" />
+            </Array>
+            <mxPoint x="495" y="410" as="sourcePoint" />
+            <mxPoint x="495" y="430" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-26" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;labelBackgroundColor=none;" value="run client_credentials workflow&lt;div&gt;&lt;br&gt;&lt;/div&gt;">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="495" y="450" as="sourcePoint" />
+            <mxPoint x="644.5" y="450" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-27" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;labelBackgroundColor=none;" value="access_token&lt;div&gt;&lt;br/&gt;&lt;/div&gt;">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="644.5" y="470" as="sourcePoint" />
+            <mxPoint x="494.92857142857133" y="470" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-28" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;labelBackgroundColor=none;" value="&lt;div&gt;access_token&lt;br&gt;&lt;br&gt;&lt;/div&gt;">
+          <mxGeometry height="50" relative="1" width="50" x="-0.0203" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="494.5" y="480" as="sourcePoint" />
+            <mxPoint x="219.92857142857133" y="480" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-29" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="Protected&lt;br&gt;Resource" vertex="1">
+          <mxGeometry height="420" width="110" x="730" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-30" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;labelBackgroundColor=none;" value="get resource + access_token&lt;div&gt;&lt;br&gt;&lt;/div&gt;">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="220" y="515" as="sourcePoint" />
+            <mxPoint x="784.5" y="515" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-31" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;labelBackgroundColor=none;" value="response&lt;div&gt;&lt;br/&gt;&lt;/div&gt;">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="784.5" y="535" as="sourcePoint" />
+            <mxPoint x="219.92857142857133" y="535" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-33" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;rounded=0;" value="Register Credential Providers" vertex="1">
+          <mxGeometry height="30" width="120" x="-100" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-35" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;rounded=0;" value="Register Workload Identities&lt;br&gt;(automatic when using AC Runtime)" vertex="1">
+          <mxGeometry height="30" width="160" x="-140" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-37" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;rounded=0;" value="Get workload identity access token (automatic when using AC Runtime and SDK)" vertex="1">
+          <mxGeometry height="30" width="160" x="-140" y="315" as="geometry" />
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-39" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;rounded=0;" value="Get Resource Credentials - API key or JWT&amp;nbsp;(automatic when using AC Runtime and SDK)" vertex="1">
+          <mxGeometry height="30" width="170" x="-150" y="415" as="geometry" />
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-42" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;rounded=0;" value="Access protected resource with obtained credential" vertex="1">
+          <mxGeometry height="30" width="150" x="-130" y="510" as="geometry" />
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-43" parent="1" style="shape=card;whiteSpace=wrap;html=1;size=7;fillColor=#ffe6cc;strokeColor=#d79b00;" value="W" vertex="1">
+          <mxGeometry height="20" width="20" x="197" y="345" as="geometry" />
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-44" parent="1" style="shape=card;whiteSpace=wrap;html=1;size=7;fillColor=#ffe6cc;strokeColor=#d79b00;" value="W" vertex="1">
+          <mxGeometry height="20" width="20" x="197" y="390" as="geometry" />
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-45" parent="1" style="shape=card;whiteSpace=wrap;html=1;size=7;fillColor=#d5e8d4;strokeColor=#82b366;" value="A" vertex="1">
+          <mxGeometry height="20" width="20" x="197" y="466" as="geometry" />
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-46" parent="1" style="shape=card;whiteSpace=wrap;html=1;size=7;fillColor=#d5e8d4;strokeColor=#82b366;" value="A" vertex="1">
+          <mxGeometry height="20" width="20" x="197" y="504" as="geometry" />
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-47" parent="1" style="ellipse;whiteSpace=wrap;html=1;fontStyle=1;fillColor=#e1d5e7;strokeColor=#9673a6;" value="1" vertex="1">
+          <mxGeometry height="20" width="20" x="30" y="185" as="geometry" />
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-48" parent="1" style="ellipse;whiteSpace=wrap;html=1;fontStyle=1;fillColor=#e1d5e7;strokeColor=#9673a6;" value="2" vertex="1">
+          <mxGeometry height="20" width="20" x="30" y="245" as="geometry" />
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-49" parent="1" style="ellipse;whiteSpace=wrap;html=1;fontStyle=1;fillColor=#e1d5e7;strokeColor=#9673a6;" value="3" vertex="1">
+          <mxGeometry height="20" width="20" x="30" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-50" parent="1" style="ellipse;whiteSpace=wrap;html=1;fontStyle=1;fillColor=#e1d5e7;strokeColor=#9673a6;" value="4" vertex="1">
+          <mxGeometry height="20" width="20" x="30" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-51" parent="1" style="ellipse;whiteSpace=wrap;html=1;fontStyle=1;fillColor=#e1d5e7;strokeColor=#9673a6;" value="5" vertex="1">
+          <mxGeometry height="20" width="20" x="30" y="515" as="geometry" />
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-52" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Agent acts on behalf of...." vertex="1">
+          <mxGeometry height="40" width="120" x="-840" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-62" edge="1" parent="1" source="mUEe1CBN_0LBhsrHWQli-53" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;labelBackgroundColor=none;" target="mUEe1CBN_0LBhsrHWQli-63" value="Needs API key">
+          <mxGeometry relative="1" x="0.6241" y="-45" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="-1010" y="200" as="sourcePoint" />
+            <mxPoint x="-1010" y="320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-65" edge="1" parent="1" source="mUEe1CBN_0LBhsrHWQli-53" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;labelBackgroundColor=none;" target="mUEe1CBN_0LBhsrHWQli-64" value="Needs access token">
+          <mxGeometry relative="1" x="0.883" y="54" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-53" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="GetWorkloadAccessToken" vertex="1">
+          <mxGeometry height="40" width="160" x="-1070" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-54" edge="1" parent="1" source="mUEe1CBN_0LBhsrHWQli-52" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.604;entryY=0.068;entryDx=0;entryDy=0;entryPerimeter=0;" target="mUEe1CBN_0LBhsrHWQli-53" value="Itself">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-59" edge="1" parent="1" source="mUEe1CBN_0LBhsrHWQli-55" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="mUEe1CBN_0LBhsrHWQli-57" value="Yes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-60" edge="1" parent="1" source="mUEe1CBN_0LBhsrHWQli-55" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="mUEe1CBN_0LBhsrHWQli-58" value="No">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-55" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Is JWT available?&amp;nbsp;" vertex="1">
+          <mxGeometry height="40" width="160" x="-670" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-56" edge="1" parent="1" source="mUEe1CBN_0LBhsrHWQli-52" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="mUEe1CBN_0LBhsrHWQli-55" value="User">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-752" y="190" as="sourcePoint" />
+            <mxPoint x="-860" y="233" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-57" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="GetWorkloadAccessTokenForJWT" vertex="1">
+          <mxGeometry height="40" width="200" x="-800" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-58" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="GetWorkloadAccessTokenForUserId" vertex="1">
+          <mxGeometry height="40" width="200" x="-580" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-63" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="GetResourceApiKey" vertex="1">
+          <mxGeometry height="50" width="130" x="-1100" y="350" as="geometry" />
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-64" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="GetResourceOauth2Token&lt;br&gt;(client_credentials grant)" vertex="1">
+          <mxGeometry height="50" width="150" x="-961" y="350" as="geometry" />
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-82" edge="1" parent="1" source="mUEe1CBN_0LBhsrHWQli-69" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="mUEe1CBN_0LBhsrHWQli-81">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-69" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="GetResourceOauth2Token&lt;br&gt;(authorization_code grant with user federation)" vertex="1">
+          <mxGeometry height="50" width="150" x="-555" y="350" as="geometry" />
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-71" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Audit trail has client / workload info only" vertex="1">
+          <mxGeometry height="20" width="260" x="-1080" y="570" as="geometry" />
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-72" edge="1" parent="1" style="endArrow=none;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="-1100" y="570" as="sourcePoint" />
+            <mxPoint x="-810" y="570" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-73" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Audit trail has both client / workload and user info" vertex="1">
+          <mxGeometry height="20" width="330" x="-720" y="570" as="geometry" />
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-74" edge="1" parent="1" style="endArrow=none;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="-740" y="570" as="sourcePoint" />
+            <mxPoint x="-360" y="570" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-76" parent="1" style="ellipse;whiteSpace=wrap;html=1;fontStyle=1;fillColor=#e1d5e7;strokeColor=#9673a6;" value="3" vertex="1">
+          <mxGeometry height="20" width="20" x="-1120" y="137.5" as="geometry" />
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-67" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="GetResourceApiKey" vertex="1">
+          <mxGeometry height="50" width="125" x="-762.5" y="350" as="geometry" />
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-68" edge="1" parent="1" source="mUEe1CBN_0LBhsrHWQli-66" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;labelBackgroundColor=none;" target="mUEe1CBN_0LBhsrHWQli-67" value="Needs API key">
+          <mxGeometry relative="1" x="0.7707" y="-26" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-70" edge="1" parent="1" source="mUEe1CBN_0LBhsrHWQli-66" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;labelBackgroundColor=none;" target="mUEe1CBN_0LBhsrHWQli-69" value="Needs access token">
+          <mxGeometry relative="1" x="0.9108" y="31" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-79" parent="1" style="ellipse;whiteSpace=wrap;html=1;fontStyle=1;fillColor=#e1d5e7;strokeColor=#9673a6;" value="4" vertex="1">
+          <mxGeometry height="20" width="20" x="-1120" y="335" as="geometry" />
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-95" edge="1" parent="1" source="mUEe1CBN_0LBhsrHWQli-81" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;labelBackgroundColor=none;" target="mUEe1CBN_0LBhsrHWQli-94" value="No">
+          <mxGeometry relative="1" x="0.4615" y="11" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-81" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Is valid token available?&lt;br&gt;(Cached, unexpired, or can be auto-refreshed without user interaction)" vertex="1">
+          <mxGeometry height="60" width="150" x="-555" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-84" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=11;" value="API Key" vertex="1">
+          <mxGeometry height="40" width="61" x="-1066.5" y="520" as="geometry" />
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-85" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=11;" value="access token&lt;br&gt;sub=workload" vertex="1">
+          <mxGeometry height="40" width="106.5" x="-939.25" y="520" as="geometry" />
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-86" edge="1" parent="1" source="mUEe1CBN_0LBhsrHWQli-63" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" target="mUEe1CBN_0LBhsrHWQli-84">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-87" edge="1" parent="1" source="mUEe1CBN_0LBhsrHWQli-64" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" target="mUEe1CBN_0LBhsrHWQli-85">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-88" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=11;" value="API Key" vertex="1">
+          <mxGeometry height="40" width="61" x="-730.5" y="520" as="geometry" />
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-89" edge="1" parent="1" source="mUEe1CBN_0LBhsrHWQli-67" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" target="mUEe1CBN_0LBhsrHWQli-88">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-90" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=11;" value="access token&lt;div&gt;sub=user&lt;/div&gt;" vertex="1">
+          <mxGeometry height="40" width="100" x="-590" y="520" as="geometry" />
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-91" edge="1" parent="1" source="mUEe1CBN_0LBhsrHWQli-81" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;labelBackgroundColor=none;" target="mUEe1CBN_0LBhsrHWQli-90" value="Yes">
+          <mxGeometry relative="1" x="0.4543" y="-11" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-98" edge="1" parent="1" source="mUEe1CBN_0LBhsrHWQli-94" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" target="mUEe1CBN_0LBhsrHWQli-96">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-94" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Authorization URL" vertex="1">
+          <mxGeometry height="40" width="80" x="-460" y="520" as="geometry" />
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-97" edge="1" parent="1" source="mUEe1CBN_0LBhsrHWQli-96" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="mUEe1CBN_0LBhsrHWQli-69">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mUEe1CBN_0LBhsrHWQli-96" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Authorize user, get user consent via standard OAuth2 authorization_code grant workflow." vertex="1">
+          <mxGeometry height="133" width="120" x="-340" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="x1io3ifZ9afvkzfDhAJn-8" edge="1" parent="1" source="x1io3ifZ9afvkzfDhAJn-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" target="x1io3ifZ9afvkzfDhAJn-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="x1io3ifZ9afvkzfDhAJn-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Workload/agent acts on behalf of itself" vertex="1">
+          <mxGeometry height="80" width="90" x="-880" y="640" as="geometry" />
+        </mxCell>
+        <mxCell id="x1io3ifZ9afvkzfDhAJn-9" edge="1" parent="1" source="x1io3ifZ9afvkzfDhAJn-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="x1io3ifZ9afvkzfDhAJn-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="x1io3ifZ9afvkzfDhAJn-2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Get Workload Access Token" vertex="1">
+          <mxGeometry height="80" width="90" x="-760" y="640" as="geometry" />
+        </mxCell>
+        <mxCell id="x1io3ifZ9afvkzfDhAJn-6" edge="1" parent="1" source="x1io3ifZ9afvkzfDhAJn-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="x1io3ifZ9afvkzfDhAJn-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="x1io3ifZ9afvkzfDhAJn-3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Create&amp;nbsp; OAuth2&amp;nbsp;&lt;div&gt;Credential Provider with Cognito configuration&lt;/div&gt;" vertex="1">
+          <mxGeometry height="80" width="90" x="-1120" y="640" as="geometry" />
+        </mxCell>
+        <mxCell id="x1io3ifZ9afvkzfDhAJn-7" edge="1" parent="1" source="x1io3ifZ9afvkzfDhAJn-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="x1io3ifZ9afvkzfDhAJn-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="x1io3ifZ9afvkzfDhAJn-4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Create a Workload Identity" vertex="1">
+          <mxGeometry height="80" width="90" x="-1000" y="640" as="geometry" />
+        </mxCell>
+        <mxCell id="x1io3ifZ9afvkzfDhAJn-5" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Get Resource Credential (access token) from Credential Provider" vertex="1">
+          <mxGeometry height="80" width="90" x="-637.5" y="640" as="geometry" />
+        </mxCell>
+        <mxCell id="x1io3ifZ9afvkzfDhAJn-10" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=11;" value="access token" vertex="1">
+          <mxGeometry height="40" width="61" x="-510.5" y="660" as="geometry" />
+        </mxCell>
+        <mxCell id="x1io3ifZ9afvkzfDhAJn-11" edge="1" parent="1" source="x1io3ifZ9afvkzfDhAJn-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" target="x1io3ifZ9afvkzfDhAJn-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
