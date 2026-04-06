@@ -6,6 +6,15 @@ A **growing** collection of sample projects demonstrating how to build, deploy, 
 
 The samples are organized as a learning path — start from the top to build foundational understanding, then progress to more advanced topics.
 
+**Or jump to:** 
+
+1. [Understanding AgentCore Runtime](#1-understanding-agentcore-runtime)
+2. [Running Agents on AgentCore Runtime](#2-running-agents-on-agentcore-runtime)
+3. [AgentCore Memory](#3-agentcore-memory)
+4. [AgentCore Gateway](#4-agentcore-gateway)
+5. [AgentCore Identity](#5-agentcore-identity)
+6. [Misc](#6-misc)
+
 ### 1. Understanding AgentCore Runtime
 
 Before building agents, understand the Runtime interface itself. These "empty shell" samples implement the AgentCore HTTP contract without running an actual agent — perfect for learning the protocol in isolation.
@@ -58,7 +67,20 @@ Expose agents securely through managed MCP gateways. Progress from basic setup t
 
 > [Read AgentCore Gateway docs for more info](https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/gateway.html)
 
-### 5. Misc
+### 5. AgentCore Identity
+
+Manage workload identities and credentials for agents. Start with the basics, then explore machine-to-machine and user-delegated authentication scenarios.
+
+| Sample | Framework | Language | IaC | Description |
+|--------|-----------|----------|-----|-------------|
+| [identity-basics](identity-basics/) | -- | -- | -- | Core identity and credential management APIs — create workload identities, create Credential Providers, store and retrieve credentials from the AgentCore vault. |
+| [identity-machine-to-machine-jwt](identity-machine-to-machine-jwt/) | -- | -- | Terraform | Agent authenticates itself to a protected downstream service using OAuth2 `client_credentials` flow, mediated by AgentCore Identity. |
+| [identity-user-federation-with-jwt](identity-user-federation-with-jwt/) | -- | -- | Terraform | Agent acts on behalf of a human user using OAuth2 `authorization_code` grant, obtaining a user-scoped access token via AgentCore Identity. |
+
+> [Read AgentCore Identity docs for more info](https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/identity.html)
+
+
+### 6. Misc
 
 | Sample | Description |
 |--------|-------------|
