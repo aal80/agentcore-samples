@@ -14,7 +14,7 @@ AgentCore Identity works in two layers:
 
 **Control plane** (`bedrock-agentcore-control`):
 - **OAuth2 Credential Provider** — stores OAuth2 provider configuration (client ID, client secret, Cognito endpoints) in the AgentCore vault. Also exposes a `callbackUrl` that Cognito must be configured to redirect to after user login.
-- **Workload Identity** — represents the agent itself; acts as the principal for all credential lookups. Workload identities are created and managed automatically when running agents on AgentCore Runtime. They can also be managed manually, as shown in this project for educational purposes.
+- **Workload Identity** — represents the agent itself; acts as the principal for all credential lookups. Workload identities are created and managed automatically when running agents on AgentCore Runtime. but can also be managed with IaC, as shown in this project for educational purposes.
 
 **Data plane** (`bedrock-agentcore`) — called at runtime:
 - **Workload Access Token (for user)** — an opaque token that binds a specific user identity to the agent's workload context. Obtained via `get-workload-access-token-for-user-id`.
@@ -28,8 +28,8 @@ The following diagram illustrates the general workflow for this scenario:
 
 ![](./images/sequence.png)
 
-1. System operator registers an OAuth2 Credential Provider with Cognito configuration (client ID, client secret, endpoints). AgentCore returns a `callbackUrl` that is registered as a redirect URI in Cognito.
-2. A workload identity is registered with AgentCore's identity registry.
+1. System operator registers an OAuth2 Credential Provider with Cognito configuration (client ID, client secret, endpoints). AgentCore returns a `callbackUrl` that is registered as a redirect URI in Cognito. 
+2. A workload identity is registered with AgentCore's identity registry. 
 3. End-user sends a request to the agent asking it to perform an action on a target resource. The agent obtains a workload access token scoped to that specific user (`get-workload-access-token-for-user-id`). This token binds the user context to the agent's workload identity token.
 4. Agents initiates a workflow to obtain the resource access token:
 
@@ -43,7 +43,7 @@ The following diagram illustrates the general workflow for this scenario:
 
 ## Running this sample project
 
-This project walks through each step manually — from provisioning infrastructure to retrieving a user-scoped access token. In production many of these steps happen automatically or through the SDK, but doing them explicitly here makes the mechanics visible.
+This project walks through each step manually — from provisioning infrastructure to retrieving a user-scoped access token. In production many of these steps happen automatically or through the SDK, but showing them explicitly here makes the mechanics visible.
 
 ![](./images/project-workflow.png)
 
@@ -53,97 +53,24 @@ This project walks through each step manually — from provisioning infrastructu
 - Terraform
 - make
 
-### Phase 1: Infrastructure and Credential Provider Setup
+### 1. Deploy all infrastructure
 
-This phase is a two-pass loop: you first deploy Cognito resources using Terraform, then create the AgentCore credential provider (which gives you the `callbackUrl`), then update Cognito with that URL.
-
-#### 1. Deploy infrastructure
-
-The Terraform configuration in `terraform/` creates:
-- A Cognito User Pool and hosted domain
+A single Terraform apply provisions required resources:
+- A Cognito User Pool, hosted domain, resource server (`backend`) with `read`/`write` scopes, and an app client configured for the `authorization_code` flow
 - A test user (`alice@example.com`)
-- A resource server (`backend`) with `read` and `write` scopes
-- An app client configured for the `authorization_code` flow
+- An AgentCore OAuth2 Credential Provider pointing to Cognito (client ID, client secret, discovery URL)
+- The AgentCore `callbackUrl` automatically registered back into the Cognito app client
+- A Workload Identity representing the agent
 
 ```bash
 make deploy-infra
 ```
 
-Terraform writes Cognito endpoints and client credentials to `./tmp/` for use in subsequent steps.
+Terraform writes the names and credentials needed by subsequent steps to `./tmp/`.
 
-#### 2. Create an OAuth2 Credential Provider
+> **Note:** Terraform handles the callback URL bootstrapping automatically. The OAuth2 Credential Provider is created first; a `null_resource` then fetches its `callbackUrl` via the AWS CLI and registers it with the Cognito app client in the same apply.
 
-```bash
-make create-oauth2-credential-provider
-```
-
-Validate that the provider was successfully created:
-
-```bash
-make get-oauth2-credential-provider
-```
-
-```yaml
-name: test-oauth2-provider
-credentialProviderVendor: CognitoOauth2
-credentialProviderArn: arn:aws:bedrock-agentcore:us-east-1:123456789012:token-vault/default/oauth2credentialprovider/test-oauth2-provider
-createdTime: '2026-04-06T10:00:00.000000-05:00'
-lastUpdatedTime: '2026-04-06T10:00:00.000000-05:00'
-callbackUrl: https://bedrock-agentcore.us-east-1.amazonaws.com/identities/oauth2/callback/...
-oauth2ProviderConfigOutput:
-  includedOauth2ProviderConfig:
-    ...REDACTED...
-```
-
-#### 3. Extract the callback URL and update Cognito
-
-AgentCore's `callbackUrl` must be registered as an allowed redirect URI in the Cognito app client. Extract and store it:
-
-```bash
-make get-oauth2-credential-provider-callback-url
-```
-
-The `callbackUrl` will be stored in `./tmp/credentials_provider_callback_url.txt`
-
-Inject it into the Terraform configuration:
-
-```bash
-make update-cognito-user-pool-client-with-oauth2-credential-provider-callback-url
-```
-
-This writes the callback URL to `terraform/terraform.tfvars`. Then redeploy to apply the change:
-
-```bash
-make deploy-infra
-```
-
-Cognito is now configured to redirect to AgentCore Identity after user login.
-
----
-
-### Phase 2: Runtime — Agent Acting on Behalf of a User
-
-#### 4. Create a Workload Identity
-
-```bash
-make create-workload-identity
-```
-
-Validate that it was successfully created:
-
-```bash
-make get-workload-identity
-```
-
-```yaml
-name: test-identity
-workloadIdentityArn: arn:aws:bedrock-agentcore:us-east-1:123456789012:workload-identity-directory/default/workload-identity/test-identity
-createdTime: '2026-04-06T10:05:00.000000-05:00'
-lastUpdatedTime: '2026-04-06T10:05:00.000000-05:00'
-allowedResourceOauth2ReturnUrls: []
-```
-
-#### 5. Retrieve a user-scoped workload access token
+### 2. Retrieve a user-scoped workload access token
 
 ```bash
 make get-workload-access-token-for-user-id
@@ -155,16 +82,16 @@ Getting workload access token for user federation...
 Stored in ./tmp/workload_access_token.txt (preview: AgV4T5tSAY0N54CCnxe8...)
 ```
 
-This token is an opaque string that binds the user identity (`test-user`) to the agent's workload context. It is only resolvable by AgentCore and cannot be decoded as a JWT.
+This token is an opaque string that binds the user identity (`alice@example.com`) to the agent's workload context. It is only resolvable by AgentCore and cannot be decoded as a JWT.
 
-#### 6. Start the OAuth2 user authentication workflow
+### 3. Start the OAuth2 user authentication workflow
 
 ```bash
 make start-resource-oauth2-token-workflow
 ```
 
 AgentCore initiates the `USER_FEDERATION` flow and returns:
-- `authorizationUrl` — used in a desktop browser to authenticate user
+- `authorizationUrl` — redirect the user here to authenticate
 - `sessionUri` — used to resume the session after login
 
 ```text
@@ -179,11 +106,11 @@ Open the `authorizationUrl` in a browser and log in with:
 - **Username**: `alice@example.com`
 - **Password**: `qweQWE123!@#`
 
-After login, Cognito redirects the browser to AgentCore's callback URL, which should look like `http://localhost/?session_id=urn%3Aietf%3Aparams%3Aoauth%3Arequest_uri%3AMzc3YjQyMzAtZDM3MS00NGIyLTgyYzUtNmU1MmMzNDFlNDYy`. 
+After login, Cognito redirects the browser to AgentCore's callback URL, which should look like `http://localhost/?session_id=urn%3Aietf%3Aparams%3Aoauth%3Arequest_uri%3AMzc3YjQyMzAtZDM3MS00NGIyLTgyYzUtNmU1MmMzNDFlNDYy`.
 
-The browser will show an empty or error page — this is expected, you can close the browser window. 
+The browser will show an empty or error page — this is expected, you can close the browser window.
 
-#### 7. Complete the authentication flow
+### 4. Complete the authentication flow
 
 ```bash
 make complete-resource-token-auth
@@ -191,7 +118,7 @@ make complete-resource-token-auth
 
 This signals AgentCore to exchange the authorization code for tokens. The `sessionUri` saved in the previous step is passed to match the previously initiated authentication session.
 
-#### 8. Retrieve the user access token
+### 5. Retrieve the user access token
 
 ```bash
 make get-resource-access-token-after-authentication
@@ -216,8 +143,6 @@ AgentCore returns the OAuth2 access token representing `alice@example.com`. The 
   "version": 2
 }
 ```
-
----
 
 ## Cleanup
 
