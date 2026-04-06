@@ -18,7 +18,7 @@ delete-workload-identity:
 		--name $(WORKLOAD_IDENTITY_NAME)
 
 get-workload-access-token-for-user-id:
-	@echo "Getting workload access token for machine2machine..."
+	@echo "Getting workload access token for user federation..."
 	$(AWS_CLI_COMMAND_ROOT_AC_DATA) get-workload-access-token-for-user-id \
 		--workload-name $(WORKLOAD_IDENTITY_NAME) \
 		--user-id test-user \

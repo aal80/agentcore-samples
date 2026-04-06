@@ -61,7 +61,7 @@ complete-resource-token-auth:
 			--session-uri $$AUTHZ_SESSION_URI \
 			--user-identifier '{"userId":"test-user"}'
 
-finish:
+get-resource-access-token-after-authentication:
 	$(call read-vars)
 	$(AWS_CLI_COMMAND_ROOT_AC_DATA) get-resource-oauth2-token \
 		--resource-credential-provider-name $(OAUTH2_PROVIDER_NAME) \
@@ -69,3 +69,9 @@ finish:
 		--scopes "$(OAUTH2_SCOPES)" \
 		--oauth2-flow "USER_FEDERATION" \
 		--resource-oauth2-return-url "http://localhost"
+
+destroy:
+	@echo "Cleaning up..."
+	make delete-oauth2-credential-provider
+	make delete-workload-identity
+	make destroy-infra

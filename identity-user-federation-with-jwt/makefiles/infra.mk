@@ -4,7 +4,7 @@ deploy-infra:
 	terraform init && \
 	terraform apply --auto-approve
 
-update-congnito-user-pool-client-with-oauth2-credential-provider-callback-url:
+update-cognito-user-pool-client-with-oauth2-credential-provider-callback-url:
 	@echo "Updating Cognito user pool client configuration with Oauth2 Credential Provider callback URL..."
 	@CALLBACK_URL=$$(cat ./tmp/credentials_provider_callback_url.txt) && \
 	echo "CALLBACK_URL=$$CALLBACK_URL" && \
@@ -14,7 +14,7 @@ update-congnito-user-pool-client-with-oauth2-credential-provider-callback-url:
 	@echo ""
 	@echo "run 'make deploy-infra' to deploy updated Cognito configuration"
 
-destroy:
+destroy-infra:
 	@echo "Destroying everything..."
 	cd terraform && terraform destroy
 	rm -rf tmp
