@@ -41,32 +41,7 @@ locals {
   cognito_discovery_url          = "https://cognito-idp.${data.aws_region.current.region}.amazonaws.com/${aws_cognito_user_pool.this.id}/.well-known/openid-configuration"
 }
 
-resource "local_file" "cognito_token_endpoint" {
-  content  = local.cognito_token_endpoint
-  filename = "${path.module}/../tmp/cognito_token_endpoint.txt"
-}
-
-resource "local_file" "cognito_authorization_endpoint" {
-  content  = local.cognito_authorization_endpoint
-  filename = "${path.module}/../tmp/cognito_authorization_endpoint.txt"
-}
-
-resource "local_file" "cognito_issuer" {
-  content  = local.cognito_issuer
-  filename = "${path.module}/../tmp/cognito_issuer.txt"
-}
-
-resource "local_file" "cognito_discovery_url" {
-  content  = local.cognito_discovery_url
-  filename = "${path.module}/../tmp/cognito_discovery_url.txt"
-}
-
-resource "local_file" "cognito_client_id" {
-  content  = aws_cognito_user_pool_client.client.id
-  filename = "${path.module}/../tmp/cognito_client_id.txt"
-}
-
-resource "local_file" "cognito_client_secret" {
-  content  = aws_cognito_user_pool_client.client.client_secret
-  filename = "${path.module}/../tmp/cognito_client_secret.txt"
+resource "local_file" "cognito_scopes" {
+  content  = join(" ", aws_cognito_user_pool_client.client.allowed_oauth_scopes)
+  filename = "${path.module}/../tmp/cognito_scopes.txt"
 }

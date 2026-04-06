@@ -22,15 +22,15 @@ The following diagram illustrates a general workflow of using AgentCore Identity
 
 ![](./images/sequence.png)
 
-* Step 1 - System operator or administrator registers a Credential Provider with Cognito User Pool configuration. The operation also supplies `client_id` and `client_secret`.
-* Step 2 - A workload identity is registered with AgentCore's identity registry. This step is fully automatic when deploying agents on AgentCore Runtime. However you can use it with any external agents as well, as illustrated in this project.
-* Step 3 - An agent retrieves a workload identity access token. This is an opaque token that can only be retrieved by entities with proper AWS IAM permissions. In this project the agent retrieves a token representing itself (no user context).
+* Step 1 - System operator or administrator registers a Credential Provider with Cognito User Pool configuration, typically using IaC (this project uses Terraform).
+* Step 2 - A workload identity is registered with AgentCore's identity registry. This step is fully automatic when deploying agents on AgentCore Runtime. However you can use it with any external agents as well, as illustrated in this project with Terraform. 
+* Step 3 - An agent retrieves a workload identity access token. This is an opaque token that can only be retrieved by entities with proper AWS IAM permissions. In this project you will retrieve a token representing the agent itself (no user context).
 * Step 4 - The agent uses workload identity access token to request resource access credentials from the Credential Provider registered in Step 1. AgentCore validates that supplied workload identity has permissions to access requested Credentials Provider. Credential provider obtains resource credentials from Cognito using the `client_credentials` grant, stores it in its internal credentials vault and returns to the agent. At no point in time the agent has access to long-lived credentials like `client_id` or `client_secret`.
 * Step 5 - The agent uses obtained resource credential to access protected resources, for example an MCP Server.
 
 ## Running this sample project
 
-To understand how an agent authenticates itself and retrieves credentials at runtime, this project walks you through each step manually — from provisioning the Cognito identity provider to calling the protected resource. In a production AgentCore deployment many of these steps happen automatically or through the SDK, but doing them explicitly here makes the mechanics visible.
+To understand how an agent authenticates itself and retrieves credentials at runtime, this project walks you through each step. In a production AgentCore deployment many of these steps happen automatically or through the SDK, but doing them explicitly here makes the mechanics visible.
 
 ![](./images/project-workflow.png)
 
@@ -42,75 +42,26 @@ To understand how an agent authenticates itself and retrieves credentials at run
 
 ### 1. Deploy infrastructure
 
-This project uses Amazon Cognito as the OAuth2 identity provider. The Terraform configuration in `terraform/` creates:
+All AWS infrastructure is provisioned via Terraform. The configuration in `terraform/` creates:
 - A Cognito User Pool and hosted domain
 - A resource server (`backend`) with `read` and `write` scopes
 - An app client configured for `client_credentials` flow
+- An AgentCore OAuth2 Credential Provider (backed by the Cognito app client)
+- An AgentCore Workload Identity
 
 ```bash
 make deploy-infra
 ```
 
-Terraform writes the Cognito endpoints and client credentials to `./tmp/` for use in subsequent steps.
+Terraform writes configuration needed by subsequent steps to `./tmp/`:
 
-### 2. Create an OAuth2 Credential Provider
+| File | Contents |
+|---|---|
+| `cognito_scopes.txt` | OAuth2 scopes (`backend/read backend/write`) |
+| `credential_provider_name.txt` | Name of the AgentCore credential provider |
+| `workload_identity_name.txt` | Name of the AgentCore workload identity |
 
-```bash
-make create-oauth2-credential-provider
-```
-
-Validate that the Credential Provider was successfully created:
-
-```bash
-make get-oauth2-credential-provider
-```
-
-```yaml
-name: test-oauth2-provider
-credentialProviderVendor: CognitoOauth2
-credentialProviderArn: arn:aws:bedrock-agentcore:us-east-1:281024298475:token-vault/default/oauth2credentialprovider/test-oauth2-provider
-createdTime: '2026-04-02T18:58:34.318000-05:00'
-lastUpdatedTime: '2026-04-02T18:58:34.318000-05:00'
-clientSecretArn:
-  secretArn: arn:aws:secretsmanager:us-east-1:...REDACTED...
-
-callbackUrl: https://bedrock-agentcore.us-east-1.amazonaws.com/identities/oauth2/callback/...REDACTED
-oauth2ProviderConfigOutput:
-  includedOauth2ProviderConfig:
-    clientId: 58u1g4ac3jd123123i5eenpoke
-    oauthDiscovery:
-      authorizationServerMetadata:
-        authorizationEndpoint: https://pkja-identity-basics.auth.us-east-1.amazoncognito.com/oauth2/authorize
-        issuer: https://cognito-idp.us-east-1.amazonaws.com/us-east-1_RZb7A6NDA
-        responseTypes:
-        - code
-        tokenEndpoint: https://pkja-identity-basics.auth.us-east-1.amazoncognito.com/oauth2/token
-...redacted...
-```
-
-> **Note:** `responseTypes: - code` in the response is metadata sourced from Cognito's OIDC discovery document and reflects server-level capabilities. It does not affect the grant type used. AgentCore will use the `client_credentials` grant because both `clientId` and `clientSecret` are present in the provider config and `--oauth2-flow M2M` is specified at token request time.
-
-### 3. Create a Workload Identity
-
-```bash
-make create-workload-identity
-```
-
-Validate that the Workload Identity was successfully created:
-
-```bash
-make get-workload-identity
-```
-
-```yaml
-name: test-identity
-workloadIdentityArn: arn:aws:bedrock-agentcore:us-east-1:123123123:workload-identity-directory/default/workload-identity/test-identity
-createdTime: '2026-04-02T16:22:21.318000-05:00'
-lastUpdatedTime: '2026-04-02T16:22:21.318000-05:00'
-allowedResourceOauth2ReturnUrls: []
-```
-
-### 4. Retrieve the workload access token
+### 2. Retrieve the workload access token
 
 ```bash
 make get-workload-access-token
@@ -124,13 +75,13 @@ Stored in ./tmp/workload_access_token.txt (preview: AgV4T5tSAY0N54CCnxe8...)
 
 The workload access token was successfully retrieved and stored in `./tmp/workload_access_token.txt`.
 
-### 5. Retrieve an OAuth2 token from the credential provider
+### 3. Retrieve an OAuth2 token from the credential provider
 
 ```bash
 make get-resource-oauth2-token
 ```
 
-This command reads the workload token retrieved in step 4 and uses it to request an OAuth2 access token from the Cognito credential provider. AgentCore calls Cognito's token endpoint with `grant_type=client_credentials` and the configured scopes (`backend/read backend/write`).
+This command reads the workload token retrieved in step 2 and uses it to request an OAuth2 access token from the Cognito credential provider. AgentCore calls Cognito's token endpoint with `grant_type=client_credentials` and the configured scopes (read from `./tmp/cognito_scopes.txt`).
 
 Decoded access token payload:
 
@@ -149,12 +100,11 @@ Decoded access token payload:
 }
 ```
 
-The scopes requested default to `backend/read backend/write` as defined in `Makefile`. 
+> **Note:** `responseTypes: - code` in the credential provider response is metadata sourced from Cognito's OIDC discovery document and reflects server-level capabilities. It does not affect the grant type used. AgentCore will use the `client_credentials` grant because both `clientId` and `clientSecret` are present in the provider config and `--oauth2-flow M2M` is specified at token request time.
 
 ## Cleanup
 
 ```bash
-make delete-workload-identity
-make delete-oauth2-credential-provider
 make destroy
 ```
+
