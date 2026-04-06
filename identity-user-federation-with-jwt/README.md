@@ -2,9 +2,9 @@
 
 When an AI agent acts on behalf of a human user — for example, accessing a user's calendar, reading their emails, or calling a service using their identity — the agent needs to obtain an OAuth2 access token that represents that user, not just itself. This project shows how an agent can securely initiate and complete a user authentication flow using the OAuth2 `authorization_code` grant, mediated by Amazon Bedrock AgentCore Identity.
 
-Unlike the [machine-to-machine (`client_credentials`) flow](https://github.com/aal80/agentcore-samples/tree/main/identity-m2m), this scenario involves a real user: the agent redirects the user to Cognito's login page, the user authenticates, and AgentCore exchanges the resulting authorization code for an access token on the agent's behalf — without the agent EVER handling the user's credentials or long-lived OAuth2 client secrets.
+Unlike the [machine-to-machine (`client_credentials`) flow](https://github.com/aal80/agentcore-samples/tree/main/identity-machine-to-machine-jwt), this scenario involves a real user: the agent redirects the user to Cognito's login page, the user authenticates, and AgentCore exchanges the resulting authorization code for an access token on the agent's behalf — without the agent EVER handling the user's credentials or long-lived OAuth2 client secrets.
 
-This project focuses on the `USER_FEDERATION` flow using Amazon Cognito as the identity provider (you can use any OAuth2-compliant provider). For a more generic overview of AgentCore Identity see [this repo](https://github.com/aal80/agentcore-samples/tree/main/identity-basics). For the machine-to-machine variant see the [identity-m2m](https://github.com/aal80/agentcore-samples/tree/main/identity-m2m) project.
+This project focuses on the `USER_FEDERATION` flow using Amazon Cognito as the identity provider (you can use any OAuth2-compliant provider). For a more generic overview of AgentCore Identity see [this repo](https://github.com/aal80/agentcore-samples/tree/main/identity-basics). For the machine-to-machine variant see the [identity-m2m](https://github.com/aal80/agentcore-samples/tree/main/identity-machine-to-machine-jwt) project.
 
 ## Understanding AgentCore Identity
 
@@ -26,13 +26,18 @@ The following diagram illustrates the general workflow for this scenario:
 
 ![](./images/sequence.png)
 
-* **Step 1** — System operator registers an OAuth2 Credential Provider with Cognito configuration (client ID, client secret, endpoints). AgentCore returns a `callbackUrl` that must be registered as a redirect URI in Cognito.
-* **Step 2** — Cognito is updated with the AgentCore `callbackUrl` as an allowed redirect URI (this is the loop: deploy → get callback URL → update Cognito → re-deploy).
-* **Step 3** — A workload identity is registered with AgentCore's identity registry.
-* **Step 4** — The agent obtains a workload access token scoped to a specific user (`get-workload-access-token-for-user-id`). This token binds the user context to the agent's identity.
-* **Step 5** — The agent calls `get-resource-oauth2-token` with `USER_FEDERATION` flow. AgentCore returns an `authorizationUrl` and a `sessionUri`. The user is redirected to the Cognito login page.
-* **Step 6** — After the user authenticates in the browser, `complete-resource-token-auth` is called to signal completion. AgentCore exchanges the authorization code for an access token.
-* **Step 7** — The agent calls `get-resource-oauth2-token` again; this time AgentCore returns the actual OAuth2 access token representing the authenticated user.
+1. System operator registers an OAuth2 Credential Provider with Cognito configuration (client ID, client secret, endpoints). AgentCore returns a `callbackUrl` that is registered as a redirect URI in Cognito.
+2. A workload identity is registered with AgentCore's identity registry.
+3. End-user sends a request to the agent asking it to perform an action on a target resource. The obtains a workload access token scoped to that specific user (`get-workload-access-token-for-user-id`). This token binds the user context to the agent's workload identity token.
+4. Agents initiates a workflow to obtain the resource access token:
+
+    a. The agent calls `get-resource-oauth2-token` with `USER_FEDERATION` flow. In case AgentCore Identity is able to return resource access token immediately - it does so, for example when an existing cached token is available or it can use a previously obtained refresh token to get a new access token. If not, AgentCore returns an `authorizationUrl` and a `sessionUri`. The workload stores sessionUri bounded to the user context. 
+
+    b. The user's browser is redirected to AgentCore's `authorizationUrl`, which further redirects the browser to the `authorizationUrl` provided by the authorization server for logging in. After successful authentication, the user's browser is redirected back to the AgentCore's `callbackUrl`, which redirects user's browser back to the agent/workload `callbackUrl`. 
+    
+    c. The agent validates that the returning user session matches the `sessionUri` stored previously. This ensures authentication session cannot be highjacked. After successful validation, the agent calls `complete-resource-token-auth` to signal completion. AgentCore Identity exchanges the authorization code for an access token granting access to the resource server.
+
+    d. The agent calls `get-resource-oauth2-token` again - this time AgentCore returns the actual OAuth2 access token representing the authenticated user and granting access to the protected resource server. 
 
 ## Running this sample project
 
