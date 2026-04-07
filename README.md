@@ -13,7 +13,8 @@ The samples are organized as a learning path — start from the top to build fou
 3. [AgentCore Memory](#3-agentcore-memory)
 4. [AgentCore Gateway](#4-agentcore-gateway)
 5. [AgentCore Identity](#5-agentcore-identity)
-6. [Misc](#6-misc)
+6. [AgentCore Tools](#6-agentcore-tools)
+7. [Misc](#7-misc)
 
 ### 1. Understanding AgentCore Runtime
 
@@ -80,7 +81,18 @@ Manage workload identities and credentials for agents. Start with the basics, th
 > [Read AgentCore Identity docs for more info](https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/identity.html)
 
 
-### 6. Misc
+### 6. AgentCore Tools
+
+Samples demonstrating AgentCore built-in tools that extend agent capabilities with managed, sandboxed execution environments.
+
+| Sample | Framework | Language | IaC | Description |
+|--------|-----------|----------|-----|-------------|
+| [code-interpreter-basics](code-interpreter-basics/) | boto3 | Python | Terraform | Interactive demos for AgentCore Code Interpreter — create sessions, execute Python code and shell commands in a managed sandboxed environment, and stream results. |
+
+> [Read AgentCore Code Interpreter docs for more info](https://docs.aws.amazon.com/bedrock-agentcore/latest/APIReference/API_InvokeCodeInterpreter.html)
+
+
+### 7. Misc
 
 | Sample | Description |
 |--------|-------------|
