@@ -480,19 +480,19 @@
         <mxCell id="177oQXjstp11UGUGyIK7-8" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="AgentCore Identity" vertex="1">
           <mxGeometry height="60" width="120" x="-610" y="210" as="geometry" />
         </mxCell>
-        <mxCell id="177oQXjstp11UGUGyIK7-12" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=8;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="Agent access token" vertex="1">
-          <mxGeometry height="30" width="80" x="-1099" y="467" as="geometry" />
+        <mxCell id="177oQXjstp11UGUGyIK7-12" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=8;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="User&#39;s access token bearing user&#39;s identity" vertex="1">
+          <mxGeometry height="57" width="80" x="-1099" y="440" as="geometry" />
         </mxCell>
         <mxCell id="177oQXjstp11UGUGyIK7-17" edge="1" parent="1" source="177oQXjstp11UGUGyIK7-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;labelBackgroundColor=none;" value="Agent access token&lt;div&gt;&lt;br/&gt;&lt;/div&gt;">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="-1114" y="459" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="177oQXjstp11UGUGyIK7-14" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="Agentic Application Authorization Server (e.g. Cognito/Okta/Ping)" vertex="1">
+        <mxCell id="177oQXjstp11UGUGyIK7-14" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="Enterprise &lt;br&gt;Authorization Server &lt;br&gt;(e.g. Cognito/Okta/Ping)" vertex="1">
           <mxGeometry height="60" width="140" x="-1000" y="380" as="geometry" />
         </mxCell>
-        <mxCell id="177oQXjstp11UGUGyIK7-19" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=8;fillColor=#d5e8d4;strokeColor=#82b366;" value="Resource access token" vertex="1">
-          <mxGeometry height="30" width="80" x="-855" y="467" as="geometry" />
+        <mxCell id="177oQXjstp11UGUGyIK7-19" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=8;fillColor=#d5e8d4;strokeColor=#82b366;" value="Agent&#39;s access token bearing user&#39;s identity" vertex="1">
+          <mxGeometry height="57" width="80" x="-855" y="440" as="geometry" />
         </mxCell>
         <mxCell id="177oQXjstp11UGUGyIK7-25" edge="1" parent="1" source="177oQXjstp11UGUGyIK7-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;labelBackgroundColor=none;" target="177oQXjstp11UGUGyIK7-23" value="retrieve resource &lt;br&gt;access token">
           <mxGeometry relative="1" x="-0.0909" as="geometry">
@@ -510,7 +510,7 @@
         <mxCell id="177oQXjstp11UGUGyIK7-23" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="Protected Resource Authorization Server" vertex="1">
           <mxGeometry height="40" width="120" x="-750" y="555" as="geometry" />
         </mxCell>
-        <mxCell id="177oQXjstp11UGUGyIK7-27" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="177oQXjstp11UGUGyIK7-23" value="Authenticate">
+        <mxCell id="177oQXjstp11UGUGyIK7-27" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="177oQXjstp11UGUGyIK7-23" value="Authenticate / consent / authorize">
           <mxGeometry relative="1" x="-0.0004" y="10" as="geometry">
             <mxPoint as="offset" />
             <Array as="points">

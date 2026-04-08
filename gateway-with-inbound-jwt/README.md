@@ -4,6 +4,13 @@ A sample project demonstrating how to secure an Amazon Bedrock AgentCore Gateway
 
 > Note that this sample is using OAuth2 `client_credentials` grant for simplicity. This grant can be used for machine2machine authentication. If your inbound identity is coming from human users, you should use `authorization_code` grant instead. 
 
+Other AgentCore Gateway projects:
+
+- [Gateway Basics](https://github.com/aal80/agentcore-samples/tree/main/gateway-basics)
+- [Gateway with interceptors](https://github.com/aal80/agentcore-samples/tree/main/gateway-with-interceptors)
+- [Gateway with AgentCore Policy](https://github.com/aal80/agentcore-samples/tree/main/gateway-with-policies)
+- [Gateway with Open Policy Agent](https://github.com/aal80/agentcore-samples/tree/main/gateway-with-open-policy-agent)
+
 ## Architecture
 
 The project deploys:

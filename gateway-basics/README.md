@@ -2,6 +2,13 @@
 
 A sample project demonstrating how to set up an Amazon Bedrock AgentCore Gateway with MCP (Model Context Protocol) backed by AWS Lambda functions. It covers creating a gateway resource, Lambda functions used as tools, gateway targets, observability (logs/metrics/traces), and monitoring gateway processing with a CloudWatch dashboard. Everything is provisioned and managed via Terraform. 
 
+Other AgentCore Gateway projects:
+
+- [Gateway with inbound JWT](https://github.com/aal80/agentcore-samples/tree/main/gateway-with-inbound-jwt)
+- [Gateway with interceptors](https://github.com/aal80/agentcore-samples/tree/main/gateway-with-interceptors)
+- [Gateway with AgentCore Policy](https://github.com/aal80/agentcore-samples/tree/main/gateway-with-policies)
+- [Gateway with Open Policy Agent](https://github.com/aal80/agentcore-samples/tree/main/gateway-with-open-policy-agent)
+
 ## Architecture
 
 The project deploys:

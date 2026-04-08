@@ -2,6 +2,13 @@
 
 A sample project demonstrating how to integrate [Open Policy Agent (OPA)](https://www.openpolicyagent.org/) with an Amazon Bedrock AgentCore Gateway for custom policy enforcement. After JWT token validation, the gateway is forwarding request to an interceptor (a Lambda function). The interceptor decodes inbound JWTs, extracts token claims, MCP tool name and arguments, and forwards them to an OPA microservice running as another Lambda function. OPA evaluates [Rego](https://www.openpolicyagent.org/docs/latest/policy-language/) policies and returns authorization decisions before the request reaches the tool.
 
+Other AgentCore Gateway projects:
+
+- [Gateway Basics](https://github.com/aal80/agentcore-samples/tree/main/gateway-basics)
+- [Gateway with inbound JWT](https://github.com/aal80/agentcore-samples/tree/main/gateway-with-inbound-jwt)
+- [Gateway with interceptors](https://github.com/aal80/agentcore-samples/tree/main/gateway-with-interceptors)
+- [Gateway with AgentCore Policy](https://github.com/aal80/agentcore-samples/tree/main/gateway-with-policies)
+
 ## Architecture
 
 ![](./images/architecture.png)

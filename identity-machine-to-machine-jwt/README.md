@@ -4,6 +4,10 @@ When an AI agent needs to call a protected downstream service — such as an MCP
 
 This project is focusing on an OAuth2-based scenario where agent uses machine-to-machine authentication (client_credentials grant) to retrieve an access token representing the agent itself. For a more generic overview of AgentCore Identity see [this repo](https://github.com/aal80/agentcore-samples/tree/main/identity-basics).
 
+Other AgentCore Identity projects
+- [AgentCore Identity Basics](https://github.com/aal80/agentcore-samples/tree/main/identity-basics)
+- [User federation with JWT (authorization_code grant)](https://github.com/aal80/agentcore-samples/tree/main/identity-user-federation-with-jwt)
+
 ## Understanding AgentCore Identity
 
 AgentCore Identity works in two layers:

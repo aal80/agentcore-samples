@@ -2,6 +2,14 @@
 
 This tutorial demonstrates how to gradually enable security on an [Amazon Bedrock AgentCore Gateway](https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/gateway.html) using JWT authentication and [AgentCore Policy](https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/policy.html) Engine.
 
+Other AgentCore Gateway projects:
+
+- [Gateway Basics](https://github.com/aal80/agentcore-samples/tree/main/gateway-basics)
+- [Gateway with inbound JWT](https://github.com/aal80/agentcore-samples/tree/main/gateway-with-inbound-jwt)
+- [Gateway with interceptors](https://github.com/aal80/agentcore-samples/tree/main/gateway-with-interceptors)
+- [Gateway with Open Policy Agent](https://github.com/aal80/agentcore-samples/tree/main/gateway-with-open-policy-agent)
+
+## Architecture
 ![](./images/architecture.png)
 
 You'll build a secure pizza ordering MCP gateway with:

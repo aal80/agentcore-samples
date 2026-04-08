@@ -2,6 +2,13 @@
 
 A sample project demonstrating how to configure **Lambda interceptors** on an Amazon Bedrock AgentCore Gateway. Interceptors let you inspect and transform both inbound requests and outbound responses as they flow through the gateway. The same pizza-ordering Lambda tools from the gateway-basics sample are reused here; the focus is on the interceptor plumbing. Everything is provisioned via Terraform.
 
+Other AgentCore Gateway projects:
+
+- [Gateway Basics](https://github.com/aal80/agentcore-samples/tree/main/gateway-basics)
+- [Gateway with inbound JWT](https://github.com/aal80/agentcore-samples/tree/main/gateway-with-inbound-jwt)
+- [Gateway with AgentCore Policy](https://github.com/aal80/agentcore-samples/tree/main/gateway-with-policies)
+- [Gateway with Open Policy Agent](https://github.com/aal80/agentcore-samples/tree/main/gateway-with-open-policy-agent)
+
 ## Architecture
 
 ![](./images/architecture.png)

@@ -8,6 +8,10 @@ Unlike the [machine-to-machine (`client_credentials`) flow](https://github.com/a
 
 This project focuses on the `USER_FEDERATION` flow using Amazon Cognito as the identity provider (you can use any OAuth2-compliant provider). For a more generic overview of AgentCore Identity see [this repo](https://github.com/aal80/agentcore-samples/tree/main/identity-basics). For the machine-to-machine variant see the [identity-m2m](https://github.com/aal80/agentcore-samples/tree/main/identity-machine-to-machine-jwt) project.
 
+Other AgentCore Identity projects
+- [AgentCore Identity Basics](https://github.com/aal80/agentcore-samples/tree/main/identity-basics)
+- [Machine-to-machine with JWT (client_credentials grant)](https://github.com/aal80/agentcore-samples/tree/main/identity-machine-to-machine-jwt)
+
 ## Understanding AgentCore Identity
 
 AgentCore Identity works in two layers:

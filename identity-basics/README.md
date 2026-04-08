@@ -2,6 +2,10 @@
 
 This project demonstrates the core identity and credential management APIs in Amazon Bedrock AgentCore Identity. It shows how to create workload identities, acquire workload access tokens, store credentials in the AgentCore vault, and retrieve them securely at runtime — without hardcoding secrets in agent code.
 
+Other AgentCore Identity projects
+- [Machine-to-machine with JWT (client_credentials grant)](https://github.com/aal80/agentcore-samples/tree/main/identity-machine-to-machine-jwt)
+- [User federation with JWT (authorization_code grant)](https://github.com/aal80/agentcore-samples/tree/main/identity-user-federation-with-jwt)
+
 ## Concepts
 
 AgentCore Identity works in two layers:
