@@ -20,7 +20,7 @@ resource "aws_cloudwatch_log_delivery_destination" "code_interpreter_usage_logs"
   output_format = "json"
 }
 
-resource "aws_cloudwatch_log_delivery" "agentcore_usage_logs" {
+resource "aws_cloudwatch_log_delivery" "code_interpreter_usage_logs" {
   delivery_source_name     = aws_cloudwatch_log_delivery_source.code_interpreter_usage_logs.name
   delivery_destination_arn = aws_cloudwatch_log_delivery_destination.code_interpreter_usage_logs.arn
 }

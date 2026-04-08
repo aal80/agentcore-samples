@@ -43,13 +43,7 @@ This provisions:
 - X-Ray tracing delivery
 - `tmp/code_interpreter_id.txt` — the Code Interpreter ID consumed by the demos
 
-### 2. Install Python dependencies
-
-```bash
-cd src && uv sync
-```
-
-### 3. Run the Demos
+### 2. Run the Demos
 
 Both demos walk through the same lifecycle step-by-step, pausing at each stage for you to press ENTER:
 
