@@ -88,6 +88,8 @@ Samples demonstrating AgentCore built-in tools that extend agent capabilities wi
 | Sample | Framework | Language | IaC | Description |
 |--------|-----------|----------|-----|-------------|
 | [code-interpreter-basics](code-interpreter-basics/) | boto3 | Python | Terraform | Interactive demos for AgentCore Code Interpreter — create sessions, execute Python code and shell commands in a managed sandboxed environment, and stream results. |
+| [browser-basics](browser-basics/) | boto3 | Python | Terraform | Interactive demos for AgentCore Browser — create sessions, browse websites in a sandboxed environment, take screenshots, record sessions. |
+
 
 > [Read AgentCore Code Interpreter docs for more info](https://docs.aws.amazon.com/bedrock-agentcore/latest/APIReference/API_InvokeCodeInterpreter.html)
 
