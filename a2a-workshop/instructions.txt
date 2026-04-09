@@ -1,4 +1,0 @@
-sudo yum install make
-curl -LsSf https://astral.sh/uv/install.sh | sh
-git clone https://github.com/aal80/agentcore-samples
-cd agentcore-samples/a2a-workshop
