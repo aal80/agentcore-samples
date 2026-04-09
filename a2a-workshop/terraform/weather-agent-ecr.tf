@@ -3,7 +3,7 @@ locals {
 }
 
 data "aws_ecr_repository" "weather_agent" {
-  name = "${local.project_name}-weather-agent"
+  name = "${local.project_name_short}-weather-agent"
 }
 
 data "aws_ecr_image" "weather_agent" {
@@ -11,6 +11,6 @@ data "aws_ecr_image" "weather_agent" {
   image_tag = "latest"
 }
 
-output "weather_agent_ecr_uri" {
-  value = local.weather_agent_ecr_uri
-}
+# output "weather_agent_ecr_uri" {
+#   value = local.weather_agent_ecr_uri
+# }

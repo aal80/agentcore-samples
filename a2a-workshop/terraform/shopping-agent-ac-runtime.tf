@@ -1,5 +1,5 @@
-resource "aws_iam_role" "weather_agent" {
-  name = "${local.project_name}-weather-agent"
+resource "aws_iam_role" "shopping_agent" {
+  name = "${local.project_name}-shopping-agent"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
@@ -13,8 +13,8 @@ resource "aws_iam_role" "weather_agent" {
   })
 }
 
-resource "aws_iam_role_policy" "weather_agent" {
-  role = aws_iam_role.weather_agent.id
+resource "aws_iam_role_policy" "shopping_agent" {
+  role = aws_iam_role.shopping_agent.id
   policy = jsonencode({
     Version = "2012-10-17"
     Statement = [
@@ -40,13 +40,13 @@ resource "aws_iam_role_policy" "weather_agent" {
   })
 }
 
-resource "aws_bedrockagentcore_agent_runtime" "weather_agent" {
-  agent_runtime_name = "${local.project_name_underscore}_weather_agent"
-  role_arn           = aws_iam_role.weather_agent.arn
+resource "aws_bedrockagentcore_agent_runtime" "shopping_agent" {
+  agent_runtime_name = "${local.project_name_underscore}_shopping_agent"
+  role_arn           = aws_iam_role.shopping_agent.arn
 
   agent_runtime_artifact {
     container_configuration {
-      container_uri = local.weather_agent_ecr_uri
+      container_uri = local.shopping_agent_ecr_uri
     }
   }
 
@@ -67,12 +67,12 @@ resource "aws_bedrockagentcore_agent_runtime" "weather_agent" {
 }
 
 locals {
-  weather_agent_runtime_arn_encoded = replace(aws_bedrockagentcore_agent_runtime.weather_agent.agent_runtime_arn, "/", "%2F")
-  weather_agent_runtime_url = "https://bedrock-agentcore.${data.aws_region.current.region}.amazonaws.com/runtimes/${local.weather_agent_runtime_arn_encoded}/invocations/"
+  shopping_agent_runtime_arn_encoded = replace(aws_bedrockagentcore_agent_runtime.shopping_agent.agent_runtime_arn, "/", "%2F")
+  shopping_agent_runtime_url = "https://bedrock-agentcore.${data.aws_region.current.region}.amazonaws.com/runtimes/${local.shopping_agent_runtime_arn_encoded}/invocations/"
 }
 
-resource "local_file" "weather_agent_runtime_url" {
-  content  = local.weather_agent_runtime_url
-  filename = "${path.module}/../tmp/weather_agent_runtime_url.txt"
+resource "local_file" "shopping_agent_runtime_url" {
+  content  = local.shopping_agent_runtime_url
+  filename = "${path.module}/../tmp/shopping_agent_runtime_url.txt"
 }
 
