@@ -23,8 +23,6 @@ resource "aws_iam_role_policy" "weather_agent" {
         Action = [
           "bedrock:InvokeModel",
           "bedrock:InvokeModelWithResponseStream",
-          "bedrock:Converse",
-          "bedrock:ConverseStream",
           "logs:CreateLogGroup",
           "logs:CreateLogStream",
           "logs:PutLogEvents",
@@ -70,7 +68,7 @@ resource "aws_bedrockagentcore_agent_runtime" "weather_agent" {
 
 locals {
   weather_agent_runtime_arn_encoded = replace(aws_bedrockagentcore_agent_runtime.weather_agent.agent_runtime_arn, "/", "%2F")
-  weather_agent_runtime_url = "https://bedrock-agentcore.${data.aws_region.current.name}.amazonaws.com/runtimes/${local.weather_agent_runtime_arn_encoded}/invocations/"
+  weather_agent_runtime_url = "https://bedrock-agentcore.${data.aws_region.current.region}.amazonaws.com/runtimes/${local.weather_agent_runtime_arn_encoded}/invocations/"
 }
 
 resource "local_file" "weather_agent_runtime_url" {

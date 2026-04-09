@@ -82,6 +82,7 @@ test-weather-agent:
 	curl -X POST "$(WEATHER_AGENT_RUNTIME_URL)" \
 		-H "Content-Type: application/json" \
 		-H "Authorization: Bearer $(ACCESS_TOKEN)" \
-		-d '{"jsonrpc":"2.0","id":"1","method":"message/send","params":{"message":{"role":"user","messageId":"msg-001","parts":[{"kind":"text","text":"What is the weather in Seattle?"}]}}}'
+		-d '{"jsonrpc":"2.0","id":"1","method":"message/send","params":{"message":{"role":"user","messageId":"msg-001","parts":[{"kind":"text","text":"What is the weather in Seattle?"}]}}}' \
+		| jq .
 
 
