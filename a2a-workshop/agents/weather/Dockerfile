@@ -1,4 +1,4 @@
-# Use uv's ARM64 Python base image
+# Use uv's ARM64 Python base image (AgentCore runs on ARM)
 FROM --platform=linux/arm64 ghcr.io/astral-sh/uv:python3.13-bookworm-slim
 
 WORKDIR /app

@@ -26,6 +26,8 @@ resource "aws_cognito_user_pool_client" "this" {
   allowed_oauth_flows                  = ["client_credentials"]
   allowed_oauth_scopes                 = ["resource/read"]
   supported_identity_providers         = ["COGNITO"]
+
+  depends_on = [ aws_cognito_resource_server.resource ]
 }
 
 locals {

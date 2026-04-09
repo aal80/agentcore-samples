@@ -3,7 +3,7 @@ locals {
 }
 
 data "aws_ecr_repository" "weather_agent" {
-  name = "a2a-workshop-weather-agent"
+  name = "${local.project_name}-weather-agent"
 }
 
 data "aws_ecr_image" "weather_agent" {

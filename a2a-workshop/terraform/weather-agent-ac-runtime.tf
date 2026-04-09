@@ -28,9 +28,13 @@ resource "aws_iam_role_policy" "weather_agent" {
           "logs:CreateLogGroup",
           "logs:CreateLogStream",
           "logs:PutLogEvents",
+          "logs:DescribeLogGroups",
+          "logs:DescribeLogStreams",
           "ecr:GetAuthorizationToken",
           "ecr:BatchGetImage",
           "ecr:GetDownloadUrlForLayer",
+          "xray:PutTraceSegments", 
+          "xray:PutTelemetryRecords"
         ]
         Resource = "*"
       }
@@ -66,16 +70,7 @@ resource "aws_bedrockagentcore_agent_runtime" "weather_agent" {
 
 locals {
   weather_agent_runtime_arn_encoded = replace(aws_bedrockagentcore_agent_runtime.weather_agent.agent_runtime_arn, "/", "%2F")
-#   weather_agent_card_url = "https://bedrock-agentcore.${data.aws_region.current.name}.amazonaws.com/runtimes/${local.weather_agent_runtime_arn_encoded}/invocations/.well-known/agent-card.json"
   weather_agent_runtime_url = "https://bedrock-agentcore.${data.aws_region.current.name}.amazonaws.com/runtimes/${local.weather_agent_runtime_arn_encoded}/invocations/"
-}
-
-# output "weather_agent_runtime_arn" {
-#   value = aws_bedrockagentcore_agent_runtime.weather_agent.agent_runtime_arn
-# }
-
-output "weather_agent_card_url" {
-  value = "https://bedrock-agentcore.${data.aws_region.current.name}.amazonaws.com/runtimes/${local.weather_agent_runtime_arn_encoded}/invocations/.well-known/agent-card.json"
 }
 
 resource "local_file" "weather_agent_runtime_url" {

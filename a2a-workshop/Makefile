@@ -1,7 +1,7 @@
 define get-vars
 	@echo "> get-vars"
 	$(eval AWS_ACCOUNT_ID := $(shell mkdir -p tmp && (cat ./tmp/aws_account_id.txt 2>/dev/null || aws sts get-caller-identity --query Account --output text | tee ./tmp/aws_account_id.txt)))
-	$(eval AWS_REGION := $(shell mkdir -p tmp && (cat ./tmp/aws_region.txt 2>/dev/null || aws configure get region | tee ./tmp/aws_region.txt)))
+	$(eval AWS_REGION := $(shell mkdir -p tmp && (cat ./tmp/aws_region.txt 2>/dev/null || { R=$$(aws configure get region); [ -z "$$R" ] && R=$${AWS_REGION}; echo "$$R" | tee ./tmp/aws_region.txt; })))
 	$(eval WEATHER_AGENT_IMAGE_NAME := a2a-workshop-weather-agent)
 	$(eval WEATHER_AGENT_ECR_REPO := $(AWS_ACCOUNT_ID).dkr.ecr.$(AWS_REGION).amazonaws.com/$(WEATHER_AGENT_IMAGE_NAME))
 	$(eval COGNITO_TOKEN_ENDPOINT := $(shell cat ./tmp/cognito_token_endpoint.txt))
@@ -25,6 +25,7 @@ deploy-infra:
 destroy:
 	@echo "Destroying everything..."
 	cd terraform && terraform destroy
+	rm -rf tmp
 
 get-cognito-access-token:
 	$(call get-vars)
@@ -54,7 +55,7 @@ build-and-push-weather-agent:
 
 	@echo "> Building container image..."
 	cd agents/weather && \
-	docker build -t "$(WEATHER_AGENT_ECR_REPO):latest" .
+	docker buildx build --platform linux/arm64 --no-cache --load -t "$(WEATHER_AGENT_ECR_REPO):latest" .
 
 	@echo "> Pushing to ECR..."
 	docker push "$(WEATHER_AGENT_ECR_REPO):latest"
