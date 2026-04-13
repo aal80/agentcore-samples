@@ -26,10 +26,11 @@ resource "aws_cognito_user_pool_client" "this" {
   allowed_oauth_flows                  = ["client_credentials"]
   allowed_oauth_scopes                 = ["gateway/invoke"]
   supported_identity_providers         = ["COGNITO"]
+  depends_on = [ aws_cognito_resource_server.gateway ]
 }
 
 locals {
-  cognito_token_endpoint = "https://${aws_cognito_user_pool_domain.this.domain}.auth.${data.aws_region.current.name}.amazoncognito.com/oauth2/token"
+  cognito_token_endpoint = "https://${aws_cognito_user_pool_domain.this.domain}.auth.${data.aws_region.current.region}.amazoncognito.com/oauth2/token"
   cognito_issuer = "https://cognito-idp.${data.aws_region.current.region}.amazonaws.com/${aws_cognito_user_pool.this.id}"
   cognito_discovery_url = "https://cognito-idp.${data.aws_region.current.region}.amazonaws.com/${aws_cognito_user_pool.this.id}/.well-known/openid-configuration"
 }
