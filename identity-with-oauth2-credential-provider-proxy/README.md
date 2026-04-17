@@ -55,6 +55,8 @@ This runs `terraform init && terraform apply` in `terraform/` and writes runtime
 make get-cognito-token
 ```
 
+> This is only to validate Cognito configuration was applied and it is possible to obtain an access token. 
+
 ## Obtain resource access token through the proxy
 
 1. Get a workload access token for your workload identity:
