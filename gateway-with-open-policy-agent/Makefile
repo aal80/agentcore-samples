@@ -34,8 +34,8 @@ endef
 login-to-ecr:
 	@echo "Logging in into ECR..."
 	$(get-aws-vars)
-	aws ecr-public get-login-password --region us-east-1 | finch login --username AWS --password-stdin public.ecr.aws
-	aws ecr get-login-password | finch login --username AWS --password-stdin "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com"
+	aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws
+	aws ecr get-login-password | docker login --username AWS --password-stdin "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com"
 
 create-opa-ecr-repo:
 	@echo "Creating/validating OPA ECR repo..."
@@ -46,15 +46,14 @@ create-opa-ecr-repo:
 build-opa-image:
 	@echo "Building OPA image..."
 	$(get-aws-vars)
-	cd opa && finch build --platform linux/amd64 -t "${OPA_ECR_REPO_URI}:latest" .
+	cd opa && docker build --platform linux/amd64 -t "${OPA_ECR_REPO_URI}:latest" .
 	@echo "test locally using either:"
 	@echo "docker run --rm -it -p 8181:8181 ${OPA_ECR_REPO_URI}:latest"
-	@echo "finch run --rm -it -p 8181:8181 ${OPA_ECR_REPO_URI}:latest"
 
 push-opa-image:
 	@echo "Pushing image to ECR..."
 	$(get-aws-vars)
-	finch push "${OPA_ECR_REPO_URI}:latest"
+	docker push "${OPA_ECR_REPO_URI}:latest"
 
 deploy-infra:
 	@echo "Running terraform apply"

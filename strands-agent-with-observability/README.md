@@ -13,7 +13,7 @@ A [Strands Agents](https://github.com/strands-agents/sdk-python) agent deployed 
 
 - AWS CLI configured with credentials and a default region
 - [Terraform](https://www.terraform.io/) >= 1.0
-- Docker or [Finch](https://github.com/runfinch/finch) for building container images
+- Docker for building container images
 - [uv](https://github.com/astral-sh/uv) for local development
 - **Transaction Search** enabled in CloudWatch (manual console step — see below)
 
@@ -116,7 +116,7 @@ Terraform configures three log delivery pipelines from the AgentCore Runtime:
 | `check-cloudwatch-configurations` | Validate observability prerequisites |
 | `login-to-ecr` | Authenticate to ECR |
 | `create-ecr-repo` | Create ECR repository if not exists |
-| `build-image` | Build container image with Finch |
+| `build-image` | Build container image with Docker |
 | `push-image` | Push image to ECR |
 | `deploy-infra` | Run `terraform init` + `terraform apply` |
 | `deploy-all` | Full pipeline: ECR repo + build + push + deploy |

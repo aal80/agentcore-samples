@@ -7,7 +7,7 @@ A minimal Amazon Bedrock AgentCore runtime that echoes back the received payload
 - Python 3.13
 - AWS CLI configured with appropriate credentials
 - Terraform
-- Docker or Finch for container builds
+- Docker for container builds
 
 ## Project Structure
 
@@ -28,8 +28,6 @@ A minimal Amazon Bedrock AgentCore runtime that echoes back the received payload
 ## Setup
 
 ### 1. Build and push the container image
-
-By default, this script uses `finch` to build images. When using Docker, replace `finch` with `docker` in the Build and Push stages. 
 
 ```bash
 ./build-and-ecr.sh

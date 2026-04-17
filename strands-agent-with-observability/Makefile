@@ -14,7 +14,7 @@ check-cloudwatch-configurations:
 
 login-to-ecr:
 	@echo "Logging in into ECR..."
-	aws ecr get-login-password | finch login --username AWS --password-stdin "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com"
+	aws ecr get-login-password | docker login --username AWS --password-stdin "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com"
 
 create-ecr-repo:
 	@echo "Creating/validating repo..."
@@ -23,14 +23,13 @@ create-ecr-repo:
 
 build-image: 
 	@echo "Building image..."
-	finch build -t "${ECR_REPO_URI}:latest" .
+	docker build -t "${ECR_REPO_URI}:latest" .
 	@echo "test locally using either:"
 	@echo "docker run --rm -it -p 8080:8080 ${ECR_REPO_URI}:latest"
-	@echo "finch run --rm -it -p 8080:8080 ${ECR_REPO_URI}:latest"
 
 push-image:
 	@echo "Pushing image to ECR..."
-	finch push "${ECR_REPO_URI}:latest"
+	docker push "${ECR_REPO_URI}:latest"
 
 deploy-infra:
 	@echo "Running terraform apply"

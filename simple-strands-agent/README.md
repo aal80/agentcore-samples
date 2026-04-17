@@ -18,7 +18,7 @@ Client --> AWS Bedrock AgentCore Runtime --> Strands Agent --> Amazon Bedrock
 - Python 3.13+
 - [uv](https://docs.astral.sh/uv/) (Python package manager)
 - AWS CLI configured with appropriate credentials
-- Docker or [Finch](https://runfinch.com/) to build and push images to ECR
+- Docker to build and push images to ECR
 - Terraform
 
 ## Project Structure
@@ -72,7 +72,7 @@ This runs: `create-ecr-repo` -> `build-image` -> `push-image` -> `deploy-infra`
 ```bash
 make login-to-ecr    # Authenticate to ECR
 make create-ecr-repo # Create ECR repository
-make build-image     # Build container image with Finch
+make build-image     # Build container image with Docker
 make push-image      # Push image to ECR
 make deploy-infra    # Run terraform apply
 ```

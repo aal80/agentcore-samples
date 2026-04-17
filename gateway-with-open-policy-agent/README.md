@@ -36,7 +36,7 @@ Policies are defined in [`opa/policy.rego`](./opa/policy.rego) using Rego:
 
 - AWS CLI configured with appropriate credentials
 - Terraform >= 1.0
-- Docker or Finch for building the OPA container image
+- Docker for building the OPA container image
 - `curl` and `jq` for testing
 
 ## Explore OPA policy

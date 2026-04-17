@@ -49,7 +49,7 @@ Whenever user uses the agent to order pizza again, the agent retrieves the above
 
 - Python 3.13+
 - [uv](https://docs.astral.sh/uv/) (package manager)
-- Docker or [Finch](https://runfinch.com/) to build/push containers
+- Docker to build/push containers
 - AWS CLI configured with appropriate credentials
 - Terraform
 

@@ -15,7 +15,7 @@ echo "ECR_REPO:       ${ECR_REPO}"
 
 # Log in to ECR
 echo "Logging in into ECR..."
-aws ecr get-login-password | finch login --username AWS --password-stdin "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com"
+aws ecr get-login-password | docker login --username AWS --password-stdin "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com"
 
 # Create repo if it doesn't exist
 echo "Checking repo..."
@@ -24,13 +24,12 @@ aws ecr describe-repositories --repository-names "${IMAGE_NAME}" --no-cli-pager 
 
 # Build and push
 echo "Building image..."
-finch build -t "${ECR_REPO}:latest" .
+docker build -t "${ECR_REPO}:latest" .
 
 echo "Pushing to ECS..."
-finch push "${ECR_REPO}:latest"
+docker push "${ECR_REPO}:latest"
 
 echo "All done!"
 echo "test locally using:"
 echo "docker run --init --rm -it -p 8080:8080 ${ECR_REPO}:latest"
-echo "finch run --init --rm -it -p 8080:8080 ${ECR_REPO}:latest"
 
