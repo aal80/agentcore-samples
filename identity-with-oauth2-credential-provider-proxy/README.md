@@ -6,6 +6,8 @@ A sample project showing how to front an identity provider (Cognito in this case
 
 ![](./images/arch.png)
 
+> If you're not familiar with AgentCore Identity and Credential Provider workflows, it's highly recommended you explore this repo first - https://github.com/aal80/agentcore-samples/tree/main/identity-basics
+
 ## The Workflow
 
 ![](./images/sequence.png)
@@ -54,6 +56,8 @@ This runs `terraform init && terraform apply` in `terraform/` and writes runtime
 ```bash
 make get-cognito-token
 ```
+
+> This is only to validate Cognito configuration was applied and it is possible to obtain an access token. 
 
 ## Obtain resource access token through the proxy
 
