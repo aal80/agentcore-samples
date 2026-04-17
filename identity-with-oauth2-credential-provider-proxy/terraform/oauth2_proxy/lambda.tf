@@ -1,5 +1,6 @@
 variable "target_discovery_url" {}
 variable "target_token_endpoint" {}
+variable "project_name" {}
 
 resource "aws_iam_role" "proxy" {
   name = "${var.project_name}-oauth2-proxy"

@@ -18,6 +18,7 @@ module "agentcore" {
     client_id = module.cognito.cognito_client_id
     client_secret_arn = module.cognito.cognito_client_secret_arn
     discovery_url = module.oauth2_proxy.oauth2_proxy_discovery_url
+    depends_on = [module.cognito]
 }
 
 output "oauth2_proxy_discovery_url" {

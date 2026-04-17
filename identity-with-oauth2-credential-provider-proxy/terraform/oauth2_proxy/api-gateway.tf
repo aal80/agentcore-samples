@@ -1,3 +1,5 @@
+variable "region" {}
+
 resource "aws_apigatewayv2_api" "this" {
   name          = "${var.project_name}-oauth2-proxy"
   protocol_type = "HTTP"
