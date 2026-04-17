@@ -2,31 +2,36 @@
 
 # Gateway with OAuth2 Credential Provider Proxy
 
-Sample showing how to front an OAuth2 identity provider (Cognito, in this case) with a proxy built on API Gateway + Lambda, and wire it up as a `CustomOauth2` credential provider in an AgentCore Gateway. Can be useful in case OAuth2 identity provider is not fully compliant with RFC and requires /token request customization. 
-
-The proxy exposes the two OAuth2 endpoints an AgentCore credential provider needs:
-
-- `GET /.well-known/openid-configuration` — OIDC discovery. Fetches the upstream discovery document and rewrites the `token_endpoint` to point back at this proxy.
-- `POST /oauth2/token` — Token endpoint. Extracts `client_id` / `client_secret` from the `Authorization: Basic` header and forwards a `client_credentials` grant to the real upstream token endpoint. Use this endpoint to modify `/token` requests.
-
-This lets you observe, modify, or short-circuit the OAuth2 handshake that AgentCore performs when resolving credentials for a gateway target — useful for custom IdPs, debugging, or policy injection.
-
-## Architecture
+A sample project showing how to front an identity provider (Cognito in this case, but can be anything else) with a proxy wired to a `CustomOauth2` AgentCore Identity Credential Provider. This pattern can be useful in case you want to use an identity provider which is not fully OAuth2/OIDC compliant and requires `/token` request customizations. 
 
 ![](./images/arch.png)
+
+## The Workflow
+
+![](./images/sequence.png)
+
+The proxy exposes two OAuth2 endpoints an AgentCore Credential Provider needs:
+
+- `GET /.well-known/openid-configuration` — OIDC discovery. Fetches the upstream discovery document and rewrites the `token_endpoint` to point back at this proxy.
+
+- `POST /oauth2/token` — Token endpoint. Extracts `client_id` / `client_secret` from the `Authorization` header and forwards a `client_credentials` grant to the real upstream token endpoint. Use this endpoint to modify `/token` requests.
+
+This lets you observe, modify, or short-circuit the OAuth2 handshake that AgentCore Identity Credential Provider performs when obtaining access tokens — useful for custom IdPs, debugging, or policy injection.
 
 ## Project layout
 
 ```
 src/
-  discovery-endpoint/     Lambda: OIDC discovery proxy
-  token-endpoint/         Lambda: OAuth2 token proxy
+  oauth2-proxy/           Single Lambda: routes to discovery.js or token.js by path
+    index.js              Router
+    discovery.js          GET /.well-known/openid-configuration handler
+    token.js              POST /oauth2/token handler
 terraform/
   bootstrap.tf            Random project prefix, region/account outputs
-  workshop.tf             Wires the modules together
-  cognito/                Upstream IdP (user pool, resource server, client)
-  oauth2_proxy/           API Gateway REST API + 2 Lambdas
-  agentcore/              AgentCore credential provider, workload identity, gateway
+  main.tf                 Wires the modules together
+  cognito/                Simulating Upstream IdP, can by any other provider
+  oauth2_proxy/           HTTP API Gateway (catch-all) + single Lambda
+  agentcore/              AgentCore credential provider, workload identity
 ```
 
 ## Prerequisites
@@ -42,7 +47,7 @@ terraform/
 make deploy-infra
 ```
 
-This runs `terraform init && terraform apply` in `terraform/` and writes runtime values into `tmp/` (client id/secret, discovery URLs, workload identity name, etc.).
+This runs `terraform init && terraform apply` in `terraform/` and writes runtime values into `tmp/` (client id/secret arn, discovery URLs, workload identity name, etc.).
 
 ## Validate Cognito is up and running
 
@@ -52,7 +57,7 @@ make get-cognito-token
 
 ## Obtain resource access token through the proxy
 
-1. Get a workload access token for your machine identity:
+1. Get a workload access token for your workload identity:
 
    ```bash
    make get-workload-access-token
@@ -77,5 +82,6 @@ make destroy
 
 ## Notes
 
-- The token Lambda logs `client_secret` in plaintext — for demonstration only. Do not run this against production credentials.
-- The proxy's `invoke_url` is computed from the REST API ID + region + stage name rather than from `aws_api_gateway_stage.invoke_url`. This avoids a dependency cycle when the Lambda needs the proxy URL in its environment and the stage depends on the Lambda's integration.
+- The Lambda function logs only the first 2 characters of `client_secret` — for demonstration only. Never logs secrets in production!.
+- The proxy's `invoke_url` is computed from the HTTP API ID + region + stage name rather than from `aws_apigatewayv2_stage.invoke_url`. This avoids a dependency cycle when the Lambda needs `PROXY_TOKEN_ENDPOINT` in its environment variables, since the stage depends on the Lambda integration.
+- The Cognito client secret is stored in AWS Secrets Manager and never written to disk. `tmp/cognito_client_secret_arn.txt` contains only the ARN.

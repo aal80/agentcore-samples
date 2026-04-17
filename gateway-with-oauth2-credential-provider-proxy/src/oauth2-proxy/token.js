@@ -1,10 +1,9 @@
 const TARGET_TOKEN_ENDPOINT = process.env.TARGET_TOKEN_ENDPOINT;
 console.log(`TARGET_TOKEN_ENDPOINT=${TARGET_TOKEN_ENDPOINT}`);
 
-export const handler = async (event) => {
-  console.info('> handler');
-  const authHeader = event.headers.Authorization ?? event.headers.authorization;
-  console.info(`authHeader=${authHeader}`);
+export const handleToken = async (authHeader) => {
+  console.log(`> handleToken`);
+  console.log(`authHeader=${authHeader.slice(0, 10)}.....`);
 
   const [, value] = authHeader.split(" ");
   const [client_id, client_secret] = Buffer.from(value, "base64")
@@ -12,10 +11,10 @@ export const handler = async (event) => {
     .split(":");
 
   console.log(`client_id=${client_id}`);
-  console.log(`client_secret=${client_secret}`);
+  console.log(`client_secret=${client_secret.slice(0, 2)}.....`);
 
-  const targetAuthHeader = `Basic ${Buffer.from(`${client_id}:${client_secret}`).toString("base64")}`
-  
+  const targetAuthHeader = `Basic ${Buffer.from(`${client_id}:${client_secret}`).toString("base64")}`;
+
   const targetResponse = await fetch(TARGET_TOKEN_ENDPOINT, {
     method: "POST",
     headers: {
@@ -24,12 +23,15 @@ export const handler = async (event) => {
     },
     body: new URLSearchParams({ grant_type: "client_credentials" }),
   });
-  
-  const tokenJson = await targetResponse.json();
-  console.log(tokenJson);
+
+  const responseJson = await targetResponse.json();
+  console.log(`targetResponse.status=${targetResponse.status}`);
 
   return {
     statusCode: targetResponse.status,
-    body: JSON.stringify(tokenJson),
+    headers: {
+      "Content-Type":"application/json"
+    },
+    body: JSON.stringify(responseJson),
   };
 };

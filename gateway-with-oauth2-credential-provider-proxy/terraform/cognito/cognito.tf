@@ -32,10 +32,24 @@ resource "aws_cognito_user_pool_client" "this" {
   depends_on = [ aws_cognito_resource_server.gateway_target]
 }
 
+resource "aws_secretsmanager_secret" "cognito_client_secret" {
+  name                    = "${var.project_name}/cognito-client-secret"
+  recovery_window_in_days = 0
+}
+
+resource "aws_secretsmanager_secret_version" "cognito_client_secret" {
+  secret_id     = aws_secretsmanager_secret.cognito_client_secret.id
+  secret_string = aws_cognito_user_pool_client.this.client_secret
+}
+
 locals {
   cognito_token_endpoint = "https://${aws_cognito_user_pool_domain.this.domain}.auth.${var.region}.amazoncognito.com/oauth2/token"
   cognito_issuer = "https://cognito-idp.${var.region}.amazonaws.com/${aws_cognito_user_pool.this.id}"
   cognito_discovery_url = "https://cognito-idp.${var.region}.amazonaws.com/${aws_cognito_user_pool.this.id}/.well-known/openid-configuration"
+}
+
+output "cognito_discovery_url" {
+  value = local.cognito_discovery_url
 }
 
 output "cognito_token_endpoint" {
@@ -46,27 +60,8 @@ output "cognito_client_id" {
   value = aws_cognito_user_pool_client.this.id
 }
 
-output "cognito_client_secret" {
-  value     = aws_cognito_user_pool_client.this.client_secret
-  sensitive = true
-}
-
-# output "cognito_issuer" {
-#   value = local.cognito_issuer
-# }
-
-output "cognito_discovery_url" {
-  value = local.cognito_discovery_url
-}
-
-resource "local_file" "cognito_token_endpoint" {
-  content         = local.cognito_token_endpoint
-  filename        = "${path.root}/../tmp/cognito_token_endpoint.txt"
-}
-
-resource "local_file" "cognito_issuer" {
-  content         = local.cognito_issuer
-  filename        = "${path.root}/../tmp/cognito_issuer.txt"
+output "cognito_client_secret_arn" {
+  value = aws_secretsmanager_secret.cognito_client_secret.arn
 }
 
 resource "local_file" "cognito_discovery_url" {
@@ -74,12 +69,17 @@ resource "local_file" "cognito_discovery_url" {
   filename        = "${path.root}/../tmp/cognito_discovery_url.txt"
 }
 
+resource "local_file" "cognito_token_endpoint" {
+  content         = local.cognito_token_endpoint
+  filename        = "${path.root}/../tmp/cognito_token_endpoint.txt"
+}
+
 resource "local_file" "cognito_client_id" {
   content         = aws_cognito_user_pool_client.this.id
   filename        = "${path.root}/../tmp/cognito_client_id.txt"
 }
 
-resource "local_file" "cognito_client_secret" {
-  content         = aws_cognito_user_pool_client.this.client_secret
-  filename        = "${path.root}/../tmp/cognito_client_secret.txt"
+resource "local_file" "cognito_client_secret_arn" {
+  content  = aws_secretsmanager_secret.cognito_client_secret.arn
+  filename = "${path.root}/../tmp/cognito_client_secret_arn.txt"
 }

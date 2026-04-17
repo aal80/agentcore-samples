@@ -16,6 +16,14 @@ module "agentcore" {
     source = "./agentcore"
     project_name = local.project_name
     client_id = module.cognito.cognito_client_id
-    client_secret = module.cognito.cognito_client_secret
+    client_secret_arn = module.cognito.cognito_client_secret_arn
     discovery_url = module.oauth2_proxy.oauth2_proxy_discovery_url
+}
+
+output "oauth2_proxy_discovery_url" {
+    value = module.oauth2_proxy.oauth2_proxy_discovery_url
+}
+
+output "oauth2_proxy_token_endpoint" {
+    value = module.oauth2_proxy.oauth2_proxy_token_endpoint
 }

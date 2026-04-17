@@ -16,12 +16,16 @@ get-cognito-token:
 
 	$(eval COGNITO_TOKEN_ENDPOINT := $(shell cat tmp/cognito_token_endpoint.txt))
 	$(eval COGNITO_CLIENT_ID := $(shell cat tmp/cognito_client_id.txt))
-	$(eval COGNITO_CLIENT_SECRET := $(shell cat tmp/cognito_client_secret.txt))
+	$(eval COGNITO_CLIENT_SECRET_ARN := $(shell cat tmp/cognito_client_secret_arn.txt))
 
 	@echo COGNITO_TOKEN_ENDPOINT=$(COGNITO_TOKEN_ENDPOINT)
 	@echo COGNITO_CLIENT_ID=$(COGNITO_CLIENT_ID)
-	@echo COGNITO_CLIENT_SECRET=$(COGNITO_CLIENT_SECRET)
+	@echo COGNITO_CLIENT_SECRET_ARN=$(COGNITO_CLIENT_SECRET_ARN)
 	@echo COGNITO_SCOPE=$(COGNITO_SCOPE)
+
+	$(eval COGNITO_CLIENT_SECRET := $(shell aws secretsmanager get-secret-value \
+		--secret-id $(COGNITO_CLIENT_SECRET_ARN) \
+		--query SecretString --output text))
 
 	$(eval ACCESS_TOKEN := $(shell curl -s -X POST $(COGNITO_TOKEN_ENDPOINT) \
   		-H "Content-Type: application/x-www-form-urlencoded" \
@@ -29,10 +33,8 @@ get-cognito-token:
 		| jq -r '.access_token'))
 	
 	@echo ""
-	@echo "Retrieved cognito access token: $(ACCESS_TOKEN)"
-	@echo $(ACCESS_TOKEN) > ./tmp/cognito_access_token.txt
-	@echo ""
-	@echo "Token saved to ./tmp/cognito_access_token.txt"
+	@echo "Retrieved cognito access token:"
+	@echo $(ACCESS_TOKEN)
 
 get-workload-access-token:
 	$(eval WORKLOAD_IDENTITY_NAME := $(shell cat tmp/workload_identity_name.txt))
@@ -69,29 +71,4 @@ get-resource-oauth2-token:
 	@cat ./tmp/resource_access_token.txt
 	@echo ""
 	@echo "Token saved to ./tmp/resource_access_token.txt"
-
-
-# list-tools:
-# 	$(get-agentcore-vars)
-# 	@echo "Listing tools...."
-# 	curl -s -X POST $(GATEWAY_URL) \
-# 		-H "Content-Type: application/json" \
-# 		-H "Authorization: Bearer $(ACCESS_TOKEN)" \
-# 		-d '{"jsonrpc":"2.0","id":1,"method":"tools/list"}'
-
-# get-menu:
-# 	$(get-agentcore-vars)
-# 	@echo "Getting menu...."
-# 	curl -s -X POST $(GATEWAY_URL) \
-# 		-H "Content-Type: application/json" \
-# 		-H "Authorization: Bearer $(ACCESS_TOKEN)" \
-# 		-d '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"get-menu___get-menu","arguments":{}}}'
-
-# create-order:
-# 	$(get-agentcore-vars)
-# 	@echo "Creating a new order...."
-# 	curl -s -X POST $(GATEWAY_URL) \
-# 		-H "Content-Type: application/json" \
-# 		-H "Authorization: Bearer $(ACCESS_TOKEN)" \
-# 		-d '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"create-order___create-order","arguments":{"itemIds":[1,2,3]}}}'
 
