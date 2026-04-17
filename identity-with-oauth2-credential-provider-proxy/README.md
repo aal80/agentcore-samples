@@ -1,6 +1,6 @@
 # WORK IN PROGRESS!!!!
 
-# Gateway with OAuth2 Credential Provider Proxy
+# AgentCore Identity Credential Provider with OAuth2 Proxy
 
 A sample project showing how to front an identity provider (Cognito in this case, but can be anything else) with a proxy wired to a `CustomOauth2` AgentCore Identity Credential Provider. This pattern can be useful in case you want to use an identity provider which is not fully OAuth2/OIDC compliant and requires `/token` request customizations. 
 
