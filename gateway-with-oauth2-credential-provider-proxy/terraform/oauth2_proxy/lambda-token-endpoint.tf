@@ -1,0 +1,42 @@
+variable "target_token_endpoint" {}
+
+resource "aws_iam_role" "token_endpoint" {
+  name = "${var.project_name}-token-endpoint"
+
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [{
+      Effect = "Allow"
+      Action = "sts:AssumeRole"
+      Principal = {
+        Service = "lambda.amazonaws.com"
+      }
+    }]
+  })
+}
+
+resource "aws_iam_role_policy_attachment" "token_endpoint_basic" {
+  role       = aws_iam_role.token_endpoint.name
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+}
+
+data "archive_file" "token_endpoint" {
+  type        = "zip"
+  source_dir  = "${path.root}/../src/token-endpoint"
+  output_path = "${path.root}/../tmp/lambda_token_endpoint.zip"
+}
+
+resource "aws_lambda_function" "token_endpoint" {
+  function_name    = "${var.project_name}-token-endpoint"
+  role             = aws_iam_role.token_endpoint.arn
+  handler          = "index.handler"
+  runtime          = "nodejs22.x"
+  memory_size      = 512
+  filename         = data.archive_file.token_endpoint.output_path
+  source_code_hash = data.archive_file.token_endpoint.output_base64sha256
+  environment {
+    variables = {
+      TARGET_TOKEN_ENDPOINT = var.target_token_endpoint
+    }
+  }
+}

@@ -1,0 +1,11 @@
+tmp/
+terraform/.terraform/
+terraform/.terraform.lock.hcl
+terraform/terraform.tfstate
+terraform/terraform.tfstate.backup
+*.bkp
+.claude/
+.DS_Store
+node_modules/
+.env
+.env.*
